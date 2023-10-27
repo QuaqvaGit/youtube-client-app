@@ -1,2 +1,4 @@
 package.json
 dist
+.angular
+node_modules

@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-cd youtube-client-app && npm run lint
-npm run prettier
+cd youtube-client-app && npm run prettier
+npm run lint

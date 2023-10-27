@@ -4,13 +4,13 @@ module.exports = {
   useTabs: false,
   semi: true,
   singleQuote: true,
-  trailingComma: "es5",
+  trailingComma: 'all',
   bracketSpacing: true,
   jsxBracketSameLine: false,
-  arrowParens: "avoid",
+  arrowParens: 'always',
   rangeStart: 0,
   rangeEnd: Infinity,
   requirePragma: false,
   insertPragma: false,
-  proseWrap: "preserve",
-}
+  proseWrap: 'preserve',
+};
