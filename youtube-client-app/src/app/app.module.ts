@@ -6,6 +6,8 @@ import AppComponent from './app.component';
 import HeaderComponent from './header/header.component';
 import SearchResultsComponent from './search-page/search-results/search-results.component';
 import SearchItemComponent from './search-page/search-item/search-item.component';
+import GetStatIconPipe from './search-page/get-stat-icon.pipe';
+import SortCriteriasComponent from './header/sort-criterias/sort-criterias.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +15,8 @@ import SearchItemComponent from './search-page/search-item/search-item.component
     HeaderComponent,
     SearchItemComponent,
     SearchResultsComponent,
+    GetStatIconPipe,
+    SortCriteriasComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

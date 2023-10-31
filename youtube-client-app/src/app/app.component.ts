@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export default class AppComponent {
-  title = 'youtube-client-app';
+  title = 'Youtube Client App';
 }

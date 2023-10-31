@@ -1,1 +1,15 @@
-<p>header works!</p>
+<header>
+  <div class="header__logo">
+    <i class="fab fa-youtube"></i>
+    <span class="header__app-name">{{appTitle}}</span>
+  </div>
+  <form class="header__search">
+    <input type="text" class="header__searchbar">
+    <input type="submit" class="header__search-submit" value="search">
+    <app-sort-criterias></app-sort-criterias>
+  </form>
+  <div class="header__account-info">
+    <span class="header__account-name">Your name</span>
+    <i class="fa fa-user"></i>
+  </div>
+</header>
