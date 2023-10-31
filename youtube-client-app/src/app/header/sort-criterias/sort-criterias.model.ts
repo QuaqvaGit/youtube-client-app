@@ -1,7 +1,12 @@
-enum SortCriterias {
+export enum SortCriterias {
   Date = 'Date',
   ViewsCount = 'Views count',
   WordOrSentence = 'Word or sentence'
 }
 
-export default SortCriterias;
+export type SortOrder = 'ASC' | 'DESC';
+
+export type SortParams = {
+  order: SortOrder;
+  criteria: string;
+}

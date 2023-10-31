@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { SearchParams } from 'src/app/search-params.model';
 import { SearchResponse } from '../search-response.model';
 import mockResponse from './mock-response.json';
 
@@ -8,5 +9,7 @@ import mockResponse from './mock-response.json';
   styleUrls: ['./search-results.component.scss'],
 })
 export default class SearchResultsComponent {
-  @Input() resultsData?: SearchResponse = mockResponse;
+  @Input({ required: true }) searchParams!: SearchParams;
+
+  resultsData?: SearchResponse = mockResponse;
 }

@@ -1,2 +1,2 @@
-<app-header [appTitle]="title"></app-header>
-<app-search-results></app-search-results>
+<app-header [appTitle]="title" (search)="onSearch($event)"></app-header>
+<app-search-results *ngIf="searchParams" [searchParams]="searchParams"></app-search-results>

@@ -1,5 +1,5 @@
 <div class="video-item">
-  <img src={{itemData?.snippet?.thumbnails?.default?.url}} alt="Video thumbnail" class="video-item__thumbnail">
+  <img src={{itemData?.snippet?.thumbnails?.maxres?.url}} alt="Video thumbnail" class="video-item__thumbnail">
   <span class="video-item__name">{{itemData?.snippet?.title}}</span>
   <div class="video-item__statistics" *ngFor="let stat of itemData?.statistics | keyvalue">
     <div class="video-item__stat">

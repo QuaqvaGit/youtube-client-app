@@ -8,5 +8,5 @@ import { SearchItem } from '../search-item.model';
 })
 
 export default class SearchItemComponent {
-  @Input() itemData?: SearchItem;
+  @Input({ required: true }) itemData?: SearchItem;
 }

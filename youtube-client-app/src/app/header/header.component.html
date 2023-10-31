@@ -3,10 +3,13 @@
     <i class="fab fa-youtube"></i>
     <span class="header__app-name">{{appTitle}}</span>
   </div>
-  <form class="header__search">
-    <input type="text" class="header__searchbar">
+  <form class="header__search" (submit)="onSearch()">
+    <input type="text" class="header__searchbar" [(ngModel)]="searchValue" name="searchValue">
     <input type="submit" class="header__search-submit" value="search">
-    <app-sort-criterias></app-sort-criterias>
+    <button type="button" class="header__show-settings" (click)="onSettingsClick()">
+      <i class="fa fa-sliders-h"></i>
+    </button>
+    <app-sort-criterias *ngIf="criteriasShown" (sortByInput)="onSortParamsChange($event)"></app-sort-criterias>
   </form>
   <div class="header__account-info">
     <span class="header__account-name">Your name</span>
