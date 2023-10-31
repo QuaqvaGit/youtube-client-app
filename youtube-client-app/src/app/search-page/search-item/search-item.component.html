@@ -1,10 +1,17 @@
 <div class="video-item">
-  <img src={{itemData?.snippet?.thumbnails?.maxres?.url}} alt="Video thumbnail" class="video-item__thumbnail">
-  <span class="video-item__name">{{itemData?.snippet?.title}}</span>
-  <div class="video-item__statistics" *ngFor="let stat of itemData?.statistics | keyvalue">
+  <img
+    src="{{ itemData?.snippet?.thumbnails?.maxres?.url }}"
+    alt="Video thumbnail"
+    class="video-item__thumbnail"
+  />
+  <span class="video-item__name">{{ itemData?.snippet?.title }}</span>
+  <div
+    class="video-item__statistics"
+    *ngFor="let stat of itemData?.statistics | keyvalue"
+  >
     <div class="video-item__stat">
-       <i class="fa {{stat.key | getStatIcon}}"></i> 
-       <span>{{stat.value}}</span> 
+      <i class="fa {{ stat.key | getStatIcon }}"></i>
+      <span>{{ stat.value }}</span>
     </div>
   </div>
   <button class="video-item__more">More</button>

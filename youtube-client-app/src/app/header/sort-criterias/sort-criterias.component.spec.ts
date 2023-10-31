@@ -8,7 +8,7 @@ describe('SortCriteriasComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [SortCriteriasComponent]
+      declarations: [SortCriteriasComponent],
     });
     fixture = TestBed.createComponent(SortCriteriasComponent);
     component = fixture.componentInstance;

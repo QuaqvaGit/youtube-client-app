@@ -1,10 +1,33 @@
-<div class="sort-criterias" *ngFor="let criteria of criterias">
-  <button [ngClass]="{ 'sort-criterias__criteria': true, 'sort-criterias__criteria_active': currentCriteria === criteria }"
-          (click)="onCriteriaChange(criteria)">{{criteria}}</button>
-  <button class="sort-criterias__order" *ngIf="criteria === currentCriteria" (click)="onOrderChange()"> 
-    <i [ngClass]="{ 'fa': true, 'fa-arrow-up': order === 'ASC', 'fa-arrow-down': order === 'DESC' }"></i>
+<div class="sort-criterias">
+  <span><b>Sort by:</b></span>
+  <div class="sort-criterias__criteria-wrapper" *ngFor="let criteria of criterias">
+    <button
+    [ngClass]="{
+      'sort-criterias__criteria': true,
+      'sort-criterias__criteria_active': currentCriteria === criteria
+    }"
+    (click)="onCriteriaChange(criteria)"
+  >
+    {{ criteria }}
   </button>
+  <button
+    class="sort-criterias__order"
+    *ngIf="criteria === currentCriteria"
+    (click)="onOrderChange()"
+  >
+    <i
+      [ngClass]="{
+        fa: true,
+        'fa-arrow-up': order === 'ASC',
+        'fa-arrow-down': order === 'DESC'
+      }"
+    ></i>
+  </button>
+  </div>
+  <input
+  type="text"
+  class="sort-criterias__word-or-sentence"
+  (ngModel)="(currentCriteria)"
+  [attr.disabled]="currentCriteria !== 'Word or sentence' || undefined"
+  />
 </div>
-<input type="text" class="sort-criterias__word-or-sentence" 
-       (ngModel)="currentCriteria"
-       [attr.disabled]="currentCriteria !== 'Word or sentence' || undefined">

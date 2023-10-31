@@ -1,0 +1,101 @@
+@import 'colors';
+@import 'mixins';
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: max(120px, 10vh);
+
+  background-color: $primary-light;
+
+  @include flex($justify-content: space-between, $align-items: flex-start);
+  padding: 20px 50px;
+
+  font-size: 1.5em;
+
+  &__logo {
+    height: 50px;
+    @include flex($gap: 10px);
+    i {
+      color: $primary-red;
+      font-size: 2em;
+    }
+    font-weight: bold;
+  }
+
+  &__search {
+    min-width: 50%;
+    @include flex($justify-content: center, $align-items: space-evenly, $direction: column);
+  }
+
+  $search-border-radius: 20px;
+  &__searchbar-wrapper {
+    position: relative;
+    height: 50px;
+    flex-grow: 1;
+
+    border-radius: $search-border-radius;
+
+    &:has(input:focus) {
+      outline: solid;
+      outline-color: $secondary-blue;
+      outline-width: 1.5px;
+      outline-offset: 1px;
+    }
+  }
+
+  &__searchbar {
+    width: 85%;
+    height: 100%;
+
+    @include input($border-radius: $search-border-radius 0 0 $search-border-radius);
+  }
+
+  &__search-submit {
+    padding: 10px;
+    width: 15%;
+    height: 100%;
+
+    text-transform: capitalize;
+
+    @include button(
+        $bg-color: $primary-red, 
+        $font-color: $primary-light,
+        $border-color: $primary-red,
+        $border-radius: 0 $search-border-radius $search-border-radius 0,
+        $hover-bg-color: $secondary-light,
+    );
+  }
+
+  &__show-settings {
+    position: absolute;
+    right: calc(15% + 5px);
+    top: 10px;
+
+    @include button(
+        $bg-color: transparent, 
+        $font-color: $primary-grey,
+        $border-color: transparent,
+        $hover-bg-color: transparent,
+        $hover-font-color: $primary-grey,
+        $border-radius: 0);
+  }
+
+  &__account-info {
+    height: 50px;
+    @include flex($gap: 10px);
+    i {
+      font-size: 1.5em;
+      color: $primary-red;
+
+      background-color: $secondary-light;
+      padding: 5px;
+
+      border-radius: 5px;
+      border: 2px solid $primary-red;
+    }
+  }
+}

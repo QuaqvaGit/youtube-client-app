@@ -1,0 +1,37 @@
+@import 'colors';
+@import 'mixins';
+
+.sort-criterias {
+  padding: 10px;
+  font-size: 0.7em;
+  @include flex($gap: 20px);
+
+  &__criteria {
+    @include button(
+      $bg-color: transparent,
+      $font-color: $primary-dark,
+      $hover-font-color: $primary-red,
+      $hover-bg-color: transparent
+    );
+    border: none;
+
+    &_active {
+      color: $primary-red;
+    }
+  }
+
+  &__order {
+    margin-left: 5px;
+    @include button(
+        $bg-color: transparent,
+        $font-color: $primary-grey,
+        $hover-font-color: $primary-red,
+        $hover-bg-color: transparent
+      );
+      border: none;
+  }
+
+  &__word-or-sentence {
+    @include input($border-radius: 10px, $outline-color: $secondary-blue);
+  }
+}

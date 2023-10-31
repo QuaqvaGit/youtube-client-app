@@ -4,7 +4,7 @@ import { SortCriterias, SortOrder, SortParams } from './sort-criterias.model';
 @Component({
   selector: 'app-sort-criterias',
   templateUrl: './sort-criterias.component.html',
-  styleUrls: ['./sort-criterias.component.scss']
+  styleUrls: ['./sort-criterias.component.scss'],
 })
 export default class SortCriteriasComponent {
   @Output() sortByInput = new EventEmitter<SortParams>();
