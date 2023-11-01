@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { SortOrder, SortParams } from './sort-criterias/sort-criterias.model';
+import { SortCriterias, SortOrder, SortParams } from './sort-criterias/sort-criterias.model';
 import { SearchParams } from '../search-params.model';
 
 @Component({
@@ -14,7 +14,7 @@ export default class HeaderComponent {
 
   criteriasShown = false;
 
-  sortCriteria = '';
+  sortCriteria: string = SortCriterias.Date;
 
   sortOrder: SortOrder = 'ASC';
 

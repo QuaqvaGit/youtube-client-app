@@ -6,7 +6,10 @@
   />
   <span class="video-item__name">{{ itemData?.snippet?.title }}</span>
   <div class="video-item__statistics">
-    <div class="video-item__stat" *ngFor="let stat of itemData?.statistics | keyvalue">
+    <div
+      class="video-item__stat"
+      *ngFor="let stat of itemData?.statistics | keyvalue"
+    >
       <i class="fa {{ stat.key | getStatIcon }}"></i>
       <span class="video-item__stat-value">{{ stat.value }}</span>
     </div>

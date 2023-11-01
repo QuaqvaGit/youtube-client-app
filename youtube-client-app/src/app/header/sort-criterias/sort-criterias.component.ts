@@ -25,5 +25,9 @@ export default class SortCriteriasComponent {
 
   onOrderChange(): void {
     this.order = this.order === 'ASC' ? 'DESC' : 'ASC';
+    this.sortByInput.emit({
+      criteria: this.currentCriteria,
+      order: this.order,
+    });
   }
 }
