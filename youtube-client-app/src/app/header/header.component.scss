@@ -13,9 +13,21 @@
   background-color: $primary-light;
 
   @include flex($justify-content: space-between, $align-items: flex-start);
-  padding: 20px 50px;
+  padding: 20px 2.5vh;
 
   font-size: 1.5em;
+
+  @media (max-width: 1280px) {
+    font-size: 1.2em;
+  }
+
+  @media (max-width: 900px) {
+    font-size: 1em;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.5em;
+  }
 
   &__logo {
     height: 50px;
@@ -25,6 +37,7 @@
       font-size: 2em;
     }
     font-weight: bold;
+    text-align: center;
   }
 
   &__search {
@@ -53,7 +66,7 @@
   }
 
   &__searchbar {
-    width: 85%;
+    width: max(85%, 120px);
     height: 100%;
 
     @include input(
@@ -63,7 +76,7 @@
 
   &__search-submit {
     padding: 10px;
-    width: 15%;
+    width: max(15%, 30px);
     height: 100%;
 
     text-transform: capitalize;
@@ -80,7 +93,7 @@
   &__show-settings {
     position: absolute;
     right: calc(15% + 5px);
-    top: 10px;
+    top: calc(50% - 0.5em);
 
     @include button(
       $bg-color: transparent,
@@ -95,6 +108,7 @@
   &__account-info {
     height: 50px;
     @include flex($gap: 10px);
+    text-align: center;
     i {
       font-size: 1.5em;
       color: $primary-red;

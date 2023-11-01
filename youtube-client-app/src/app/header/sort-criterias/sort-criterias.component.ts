@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { SortCriterias, SortOrder, SortParams } from './sort-criterias.model';
 
 @Component({
@@ -7,6 +7,8 @@ import { SortCriterias, SortOrder, SortParams } from './sort-criterias.model';
   styleUrls: ['./sort-criterias.component.scss'],
 })
 export default class SortCriteriasComponent {
+  @Input({ required: true }) isShown = false;
+
   @Output() sortByInput = new EventEmitter<SortParams>();
 
   criterias: string[] = Object.values(SortCriterias);

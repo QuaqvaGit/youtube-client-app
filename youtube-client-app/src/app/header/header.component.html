@@ -21,7 +21,7 @@
       <input type="submit" class="header__search-submit" value="search" />
     </div>
     <app-sort-criterias
-      *ngIf="criteriasShown"
+      [isShown]="criteriasShown"
       (sortByInput)="onSortParamsChange($event)"
     ></app-sort-criterias>
   </form>

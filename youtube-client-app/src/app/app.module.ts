@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
+import ButtonComponent from 'src/app/shared/components/button/button.component';
+
 import AppRoutingModule from './app-routing.module';
 import AppComponent from './app.component';
 import HeaderComponent from './header/header.component';
@@ -23,7 +25,7 @@ import FilterSearchPipe from './search-page/search-results/filter-search.pipe';
     DateColorDirective,
     FilterSearchPipe,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ButtonComponent],
   providers: [],
   bootstrap: [AppComponent],
 })

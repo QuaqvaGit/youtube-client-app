@@ -1,0 +1,11 @@
+@import 'variables';
+
+button {
+  cursor: pointer;
+
+  transition: scale $active-transition;
+
+  &:active {
+    scale: 0.9;
+  }
+}

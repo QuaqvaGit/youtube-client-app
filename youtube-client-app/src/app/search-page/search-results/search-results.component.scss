@@ -1,4 +1,5 @@
 @import 'mixins';
+@import 'animations';
 
 .search-results {
   padding: 40px;
@@ -6,4 +7,6 @@
   @include flex();
   flex-wrap: wrap;
   gap: 40px;
+
+  animation: appear $active-transition;
 }

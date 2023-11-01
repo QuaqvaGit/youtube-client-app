@@ -1,10 +1,13 @@
 @import 'colors';
 @import 'mixins';
+@import 'animations';
 
 .sort-criterias {
   padding: 10px;
-  font-size: 0.7em;
+  font-size: 0.75em;
   @include flex($gap: 20px);
+
+  transition: opacity $active-transition;
 
   &__criteria {
     @include button(
@@ -17,6 +20,7 @@
 
     &_active {
       color: $primary-red;
+      pointer-events: none;
     }
   }
 
@@ -29,6 +33,13 @@
       $hover-bg-color: transparent
     );
     border: none;
+
+    animation: appear $active-transition forwards;
+    transition: color $hover-transition, scale $active-transition, $active-transition;
+
+    &_descending {
+      rotate: 180deg;
+    }
   }
 
   &__word-or-sentence {

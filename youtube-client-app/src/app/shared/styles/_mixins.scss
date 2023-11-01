@@ -65,6 +65,12 @@
     outline-color: $outline-color;
     outline-width: 1px;
   }
+
+  transition: background-color $active-transition;
+
+  &:disabled {
+    background-color: $primary-light;
+  }
 }
 
 @mixin clamp-lines($num) {
