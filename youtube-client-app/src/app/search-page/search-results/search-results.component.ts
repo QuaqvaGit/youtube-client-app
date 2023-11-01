@@ -15,14 +15,17 @@ export default class SearchResultsComponent {
   public get resultsData(): SearchResponse {
     const response = mockResponse;
     const searchValue = this.searchParams.searchValue.toLowerCase();
-    response.items = response.items.filter((item) => 
-      item.snippet.title.toLowerCase().includes(searchValue)
-      || item.snippet.tags.map((tag) => tag.toLowerCase()).includes(searchValue)
-      || item.snippet.description.toLowerCase().includes(searchValue)
+    response.items = response.items.filter(
+      (item) =>
+        item.snippet.title.toLowerCase().includes(searchValue) ||
+        item.snippet.tags
+          .map((tag) => tag.toLowerCase())
+          .includes(searchValue) ||
+        item.snippet.description.toLowerCase().includes(searchValue),
     );
 
-    let {criteria} = this.searchParams;
-    switch(criteria) {
+    let { criteria } = this.searchParams;
+    switch (criteria) {
       case SortCriterias.Date:
         criteria = 'snippet.publishedAt';
         break;
@@ -40,13 +43,17 @@ export default class SearchResultsComponent {
       props.split('.').forEach((prop) => {
         result = result[prop];
       });
-      if (this.searchParams.criteria === SortCriterias.Date) return new Date(result.toString()).getTime();
+      if (this.searchParams.criteria === SortCriterias.Date)
+        return new Date(result.toString()).getTime();
       return Number(result);
-    }
+    };
     response.items.sort((item1, item2) => {
       const item1Iterable = item1 as unknown as IterableObj;
       const item2Iterable = item2 as unknown as IterableObj;
-      const result = (this.searchParams.order === 'ASC' ? 1 : -1) * (propertiesApplier(item1Iterable, criteria) - propertiesApplier(item2Iterable, criteria));
+      const result =
+        (this.searchParams.order === 'ASC' ? 1 : -1) *
+        (propertiesApplier(item1Iterable, criteria) -
+          propertiesApplier(item2Iterable, criteria));
       return result;
     });
     return response;

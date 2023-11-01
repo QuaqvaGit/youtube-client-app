@@ -1,5 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { SortCriterias, SortOrder, SortParams } from './sort-criterias/sort-criterias.model';
+import {
+  SortCriterias,
+  SortOrder,
+  SortParams,
+} from './sort-criterias/sort-criterias.model';
 import { SearchParams } from '../search-params.model';
 
 @Component({

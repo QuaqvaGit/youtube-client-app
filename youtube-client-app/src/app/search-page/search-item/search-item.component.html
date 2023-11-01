@@ -1,4 +1,4 @@
-<div class="video-item" [ngStyle]="{ 'border-color': getBorderColor() }">
+<div class="video-item" appDateColor="{{itemData?.snippet?.publishedAt}}">
   <img
     src="{{ itemData?.snippet?.thumbnails?.maxres?.url }}"
     alt="Video thumbnail"
