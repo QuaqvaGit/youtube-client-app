@@ -1,7 +1,7 @@
 import { Directive, ElementRef, Input, Renderer2 } from '@angular/core';
 
 @Directive({
-  selector: '[appDateColor]'
+  selector: '[appDateColor]',
 })
 export default class DateColorDirective {
   @Input('appDateColor') set publishDate(value: string) {
@@ -25,5 +25,4 @@ export default class DateColorDirective {
   }
 
   constructor(private element: ElementRef, private renderer: Renderer2) {}
-
 }

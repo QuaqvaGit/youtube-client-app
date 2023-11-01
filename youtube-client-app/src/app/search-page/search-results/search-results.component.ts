@@ -14,15 +14,6 @@ export default class SearchResultsComponent {
 
   public get resultsData(): SearchResponse {
     const response = mockResponse;
-    const searchValue = this.searchParams.searchValue.toLowerCase();
-    response.items = response.items.filter(
-      (item) =>
-        item.snippet.title.toLowerCase().includes(searchValue) ||
-        item.snippet.tags
-          .map((tag) => tag.toLowerCase())
-          .includes(searchValue) ||
-        item.snippet.description.toLowerCase().includes(searchValue),
-    );
 
     let { criteria } = this.searchParams;
     switch (criteria) {
