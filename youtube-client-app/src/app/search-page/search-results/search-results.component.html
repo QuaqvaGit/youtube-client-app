@@ -1,7 +1,9 @@
 <div class="search-results">
   <app-search-item
     *ngFor="
-      let item of resultsData.items | filterSearch : searchParams.searchValue
+      let item of searchResults.items
+        | filterSearch : searchParams.searchValue
+        | sortSearch : searchParams
     "
     [itemData]="item"
   ></app-search-item>

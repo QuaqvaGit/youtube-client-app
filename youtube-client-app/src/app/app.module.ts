@@ -13,6 +13,7 @@ import GetStatIconPipe from './search-page/get-stat-icon.pipe';
 import SortCriteriasComponent from './header/sort-criterias/sort-criterias.component';
 import DateColorDirective from './search-page/search-item/date-color.directive';
 import FilterSearchPipe from './search-page/search-results/filter-search.pipe';
+import SortSearchPipe from './search-page/search-results/sort-search.pipe';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import FilterSearchPipe from './search-page/search-results/filter-search.pipe';
     SortCriteriasComponent,
     DateColorDirective,
     FilterSearchPipe,
+    SortSearchPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ButtonComponent],
   providers: [],
