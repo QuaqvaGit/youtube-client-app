@@ -1,17 +1,14 @@
-<div class="video-item">
+<div class="video-item" [ngStyle]="{ 'border-color': getBorderColor() }">
   <img
     src="{{ itemData?.snippet?.thumbnails?.maxres?.url }}"
     alt="Video thumbnail"
     class="video-item__thumbnail"
   />
   <span class="video-item__name">{{ itemData?.snippet?.title }}</span>
-  <div
-    class="video-item__statistics"
-    *ngFor="let stat of itemData?.statistics | keyvalue"
-  >
-    <div class="video-item__stat">
+  <div class="video-item__statistics">
+    <div class="video-item__stat" *ngFor="let stat of itemData?.statistics | keyvalue">
       <i class="fa {{ stat.key | getStatIcon }}"></i>
-      <span>{{ stat.value }}</span>
+      <span class="video-item__stat-value">{{ stat.value }}</span>
     </div>
   </div>
   <button class="video-item__more">More</button>

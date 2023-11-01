@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import '../node_modules/normalize.css/normalize.css';
+@import 'variables';
 
 * {
   margin: 0;
@@ -14,4 +15,8 @@
 
 html {
   font-family: 'Roboto', 'Tahoma', sans-serif;
+}
+
+main {
+  padding-top: $header-height;
 }

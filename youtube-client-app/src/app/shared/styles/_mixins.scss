@@ -1,6 +1,11 @@
 @import './variables';
 
-@mixin flex($justify-content: center, $align-items: center, $direction: row, $gap: none) {
+@mixin flex(
+  $justify-content: center,
+  $align-items: center,
+  $direction: row,
+  $gap: none
+) {
   display: flex;
   justify-content: $justify-content;
   align-items: $align-items;
@@ -9,19 +14,19 @@
 }
 
 @mixin shadow() {
-  box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 @mixin button(
-$bg-color, 
-$font-color, 
-$border-color: $font-color, 
-$hover-bg-color: $font-color, 
-$hover-font-color: $bg-color, 
-$hover-border-color: $border-color,
-$border-radius: 20px,
-$expand-on-hover: false,
-$shadow-on-hover: false
+  $bg-color,
+  $font-color,
+  $border-color: $font-color,
+  $hover-bg-color: $font-color,
+  $hover-font-color: $bg-color,
+  $hover-border-color: $border-color,
+  $border-radius: 20px,
+  $expand-on-hover: false,
+  $shadow-on-hover: false
 ) {
   cursor: pointer;
   background-color: $bg-color;
@@ -29,17 +34,18 @@ $shadow-on-hover: false
   border: 2px solid $border-color;
   border-radius: $border-radius;
 
-  transition: background-color $hover-transition, color $hover-transition, border-color $hover-transition, scale $active-transition;
+  transition: background-color $hover-transition, color $hover-transition,
+    border-color $hover-transition, scale $active-transition;
   &:hover {
     background-color: $hover-bg-color;
     color: $hover-font-color;
     border-color: $hover-border-color;
 
-    @if($expand-on-hover) {
+    @if ($expand-on-hover) {
       scale: 1.1;
     }
 
-    @if($shadow-on-hover) {
+    @if ($shadow-on-hover) {
       @include shadow();
     }
   }
@@ -51,12 +57,20 @@ $shadow-on-hover: false
 
 @mixin input($border-radius: 20px, $outline-color: transparent) {
   background-color: $secondary-light;
-  padding-left: 1%;  
+  padding-left: 1%;
   border: 2px solid $primary-grey;
-  border-radius: $border-radius;  
+  border-radius: $border-radius;
   &:focus {
     outline-offset: 1px;
     outline-color: $outline-color;
     outline-width: 1px;
   }
+}
+
+@mixin clamp-lines($num) {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: $num;
+         line-clamp: $num; 
+  -webkit-box-orient: vertical; 
 }

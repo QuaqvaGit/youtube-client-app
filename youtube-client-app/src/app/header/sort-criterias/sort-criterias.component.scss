@@ -23,12 +23,12 @@
   &__order {
     margin-left: 5px;
     @include button(
-        $bg-color: transparent,
-        $font-color: $primary-grey,
-        $hover-font-color: $primary-red,
-        $hover-bg-color: transparent
-      );
-      border: none;
+      $bg-color: transparent,
+      $font-color: $primary-grey,
+      $hover-font-color: $primary-red,
+      $hover-bg-color: transparent
+    );
+    border: none;
   }
 
   &__word-or-sentence {

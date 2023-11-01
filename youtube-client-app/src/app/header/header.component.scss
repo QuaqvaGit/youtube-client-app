@@ -1,5 +1,6 @@
 @import 'colors';
 @import 'mixins';
+@import 'variables';
 
 .header {
   position: fixed;
@@ -7,7 +8,7 @@
   left: 0;
 
   width: 100%;
-  height: max(120px, 10vh);
+  height: $header-height;
 
   background-color: $primary-light;
 
@@ -28,7 +29,11 @@
 
   &__search {
     min-width: 50%;
-    @include flex($justify-content: center, $align-items: space-evenly, $direction: column);
+    @include flex(
+      $justify-content: center,
+      $align-items: space-evenly,
+      $direction: column
+    );
   }
 
   $search-border-radius: 20px;
@@ -51,7 +56,9 @@
     width: 85%;
     height: 100%;
 
-    @include input($border-radius: $search-border-radius 0 0 $search-border-radius);
+    @include input(
+      $border-radius: $search-border-radius 0 0 $search-border-radius
+    );
   }
 
   &__search-submit {
@@ -62,11 +69,11 @@
     text-transform: capitalize;
 
     @include button(
-        $bg-color: $primary-red, 
-        $font-color: $primary-light,
-        $border-color: $primary-red,
-        $border-radius: 0 $search-border-radius $search-border-radius 0,
-        $hover-bg-color: $secondary-light,
+      $bg-color: $primary-red,
+      $font-color: $primary-light,
+      $border-color: $primary-red,
+      $border-radius: 0 $search-border-radius $search-border-radius 0,
+      $hover-bg-color: $secondary-light
     );
   }
 
@@ -76,12 +83,13 @@
     top: 10px;
 
     @include button(
-        $bg-color: transparent, 
-        $font-color: $primary-grey,
-        $border-color: transparent,
-        $hover-bg-color: transparent,
-        $hover-font-color: $primary-grey,
-        $border-radius: 0);
+      $bg-color: transparent,
+      $font-color: $primary-grey,
+      $border-color: transparent,
+      $hover-bg-color: transparent,
+      $hover-font-color: $primary-grey,
+      $border-radius: 0
+    );
   }
 
   &__account-info {
