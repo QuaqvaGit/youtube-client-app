@@ -54,11 +54,6 @@
     width: 100%;
     height: 30px;
 
-    @include button(
-      $bg-color: $primary-red,
-      $font-color: $secondary-light,
-      $border-color: $primary-red,
-      $border-radius: 0 0 18px 18px
-    );
+    border-radius: 0 0 18px 18px;
   }
 }

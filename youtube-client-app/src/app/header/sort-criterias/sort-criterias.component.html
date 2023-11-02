@@ -4,26 +4,40 @@
     class="sort-criterias__criteria-wrapper"
     *ngFor="let criteria of criterias"
   >
-    <button
+    <app-button
+      [parameters]="{
+        defaultColors: {
+          backgroundColor: 'transparent',
+          fontColor: 'black',
+          borderColor: 'transparent'
+        },
+        hoverColors: { backgroundColor: 'transparent', fontColor: '#a20000' }
+      }"
       [ngClass]="{
         'sort-criterias__criteria': true,
         'sort-criterias__criteria_active': currentCriteria === criteria
       }"
       (click)="onCriteriaChange(criteria)"
+      >{{ criteria }}</app-button
     >
-      {{ criteria }}
-    </button>
-    <button
+    <app-button
       [ngClass]="{
         'sort-criterias__order': true,
         'sort-criterias__order_descending': order === 'DESC'
       }"
-      class=""
       *ngIf="criteria === currentCriteria"
       (click)="onOrderChange()"
+      [parameters]="{
+        defaultColors: {
+          backgroundColor: 'transparent',
+          fontColor: '#c5c5c5',
+          borderColor: 'transparent'
+        },
+        hoverColors: { backgroundColor: 'transparent', fontColor: '#a20000' }
+      }"
     >
       <i class="fa fa-arrow-up"></i>
-    </button>
+    </app-button>
   </div>
   <input
     type="text"

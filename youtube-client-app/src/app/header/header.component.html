@@ -11,13 +11,20 @@
         [(ngModel)]="searchValue"
         name="searchValue"
       />
-      <button
-        type="button"
+      <app-button
         class="header__show-settings"
         (click)="onSettingsClick()"
+        [parameters]="{
+          defaultColors: {
+            backgroundColor: 'transparent',
+            fontColor: '#c5c5c5',
+            borderColor: 'transparent'
+          },
+          hoverColors: { backgroundColor: 'transparent', fontColor: '#c5c5c5' }
+        }"
       >
         <i class="fa fa-sliders-h"></i>
-      </button>
+      </app-button>
       <input type="submit" class="header__search-submit" value="search" />
     </div>
     <app-sort-criterias

@@ -9,34 +9,21 @@
 
   transition: opacity $active-transition;
 
-  &__criteria {
-    @include button(
-      $bg-color: transparent,
-      $font-color: $primary-dark,
-      $hover-font-color: $primary-red,
-      $hover-bg-color: transparent
-    );
-    border: none;
+  &__criteria-wrapper {
+    @include flex();
+  }
 
-    &_active {
-      color: $primary-red;
-      pointer-events: none;
-    }
+  &__criteria_active {
+    border-bottom: 2px solid $primary-red;
+    pointer-events: none;
   }
 
   &__order {
     margin-left: 5px;
-    @include button(
-      $bg-color: transparent,
-      $font-color: $primary-grey,
-      $hover-font-color: $primary-red,
-      $hover-bg-color: transparent
-    );
-    border: none;
-
     animation: appear $active-transition forwards;
-    transition: color $hover-transition, scale $active-transition,
-      $active-transition;
+
+    rotate: 0;
+    transition: rotate $active-transition;
 
     &_descending {
       rotate: 180deg;

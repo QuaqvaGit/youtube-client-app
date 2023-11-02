@@ -14,5 +14,12 @@
       <span class="video-item__stat-value">{{ stat.value }}</span>
     </div>
   </div>
-  <button class="video-item__more">More</button>
+  <app-button
+    class="video-item__more"
+    [parameters]="{
+      defaultColors: { backgroundColor: '#a20000', fontColor: 'white' },
+      hoverColors: {}
+    }"
+    >More</app-button
+  >
 </div>

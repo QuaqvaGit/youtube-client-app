@@ -6,6 +6,7 @@
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 1;
 
   width: 100%;
   height: $header-height;
@@ -94,15 +95,6 @@
     position: absolute;
     right: calc(15% + 5px);
     top: calc(50% - 0.5em);
-
-    @include button(
-      $bg-color: transparent,
-      $font-color: $primary-grey,
-      $border-color: transparent,
-      $hover-bg-color: transparent,
-      $hover-font-color: $primary-grey,
-      $border-radius: 0
-    );
   }
 
   &__account-info {
