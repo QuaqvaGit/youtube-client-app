@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { SearchParams } from 'src/app/shared/models/search-params.model';
 import {
   SortCriterias,
   SortOrder,
   SortParams,
-} from './sort-criterias/sort-criterias.model';
-import { SearchParams } from '../search-params.model';
+} from '../../../shared/models/sort-criterias.model';
 
 @Component({
   selector: 'app-header',

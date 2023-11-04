@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { SearchParams } from 'src/app/search-params.model';
-import { SearchResponse } from '../search-response.model';
+import { SearchParams } from 'src/app/shared/models/search-params.model';
+import { SearchResponse } from '../../models/search-response.model';
 import mockResponse from './mock-response.json';
 
 @Component({

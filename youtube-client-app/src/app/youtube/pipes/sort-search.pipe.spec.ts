@@ -1,4 +1,4 @@
-import { SortSearchPipe } from './sort-search.pipe';
+import SortSearchPipe from './sort-search.pipe';
 
 describe('SortSearchPipe', () => {
   it('create an instance', () => {

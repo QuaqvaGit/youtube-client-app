@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { SearchParams } from './search-params.model';
 
 @Component({
   selector: 'app-root',
@@ -8,10 +7,4 @@ import { SearchParams } from './search-params.model';
 })
 export default class AppComponent {
   title = 'Youtube Client App';
-
-  searchParams?: SearchParams;
-
-  onSearch(params: SearchParams) {
-    this.searchParams = params;
-  }
 }

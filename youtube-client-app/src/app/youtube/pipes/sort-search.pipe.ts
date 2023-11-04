@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { SortCriterias } from 'src/app/header/sort-criterias/sort-criterias.model';
-import { SearchParams } from 'src/app/search-params.model';
-import { SearchItem } from '../search-item.model';
+import { SortCriterias } from 'src/app/shared/models/sort-criterias.model';
+import { SearchParams } from 'src/app/shared/models/search-params.model';
+import { SearchItem } from '../models/search-item.model';
 
 @Pipe({
   name: 'sortSearch',
