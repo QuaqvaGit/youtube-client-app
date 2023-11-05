@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import YoutubeService from '../../services/youtube.service';
 import { SearchItem } from '../../models/search-item.model';
 
