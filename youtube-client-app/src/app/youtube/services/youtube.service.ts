@@ -6,7 +6,7 @@ import mockResponse from './mock-response.json';
 import { SearchItem } from '../models/search-item.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export default class YoutubeService {
   public getItems(params: SearchParams): SearchResponse {
@@ -16,7 +16,10 @@ export default class YoutubeService {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  private applySearchParams(items: SearchItem[], params: SearchParams): SearchItem[] {
+  private applySearchParams(
+    items: SearchItem[],
+    params: SearchParams,
+  ): SearchItem[] {
     let { criteria } = params;
     switch (criteria) {
       case SortCriterias.Date:
