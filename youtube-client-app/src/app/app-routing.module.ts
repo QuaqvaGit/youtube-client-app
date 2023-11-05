@@ -8,13 +8,13 @@ const routes: Routes = [
   {
     path: 'videos',
     loadChildren: () => import('./youtube/youtube.module'),
-    canActivate: [loggedInGuard]
+    canActivate: [loggedInGuard],
   },
   { path: '', redirectTo: 'videos', pathMatch: 'full' },
   {
     path: 'login',
     loadChildren: () => import('./auth/auth.module'),
-    canActivate: [loggedOutGuard]
+    canActivate: [loggedOutGuard],
   },
   { path: '**', component: NotFoundPageComponent },
 ];

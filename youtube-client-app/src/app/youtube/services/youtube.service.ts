@@ -9,6 +9,11 @@ import { SearchItem } from '../models/search-item.model';
   providedIn: 'root',
 })
 export default class YoutubeService {
+  // eslint-disable-next-line class-methods-use-this
+  public getItemById(id: string): SearchItem | undefined {
+    return mockResponse.items.find((item) => item.id === id);
+  }
+
   public getItems(params: SearchParams): SearchResponse {
     const response = structuredClone(mockResponse);
     response.items = this.applySearchParams(response.items, params);

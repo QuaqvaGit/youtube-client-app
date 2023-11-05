@@ -5,7 +5,7 @@ import CryptoJS from 'crypto-js';
 import { UserData } from '../models/user.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export default class LoginService {
   private static TOKEN_STORAGE_KEY = 'youtube-client:auth-token';
@@ -18,13 +18,26 @@ export default class LoginService {
     return this.user !== null;
   }
 
-  constructor() { 
-    this.user = JSON.parse(localStorage.getItem(CryptoJS.AES.decrypt(LoginService.TOKEN_STORAGE_KEY, LoginService.CYPHER_KEY).toString()) || 'null');
+  constructor() {
+    this.user = JSON.parse(
+      localStorage.getItem(
+        CryptoJS.AES.decrypt(
+          LoginService.TOKEN_STORAGE_KEY,
+          LoginService.CYPHER_KEY,
+        ).toString(),
+      ) || 'null',
+    );
   }
 
   login(login: string, password: string): void {
     this.user = { login, password };
-    localStorage.setItem(LoginService.TOKEN_STORAGE_KEY, CryptoJS.AES.encrypt(JSON.stringify(this.user), LoginService.CYPHER_KEY).toString());
+    localStorage.setItem(
+      LoginService.TOKEN_STORAGE_KEY,
+      CryptoJS.AES.encrypt(
+        JSON.stringify(this.user),
+        LoginService.CYPHER_KEY,
+      ).toString(),
+    );
   }
 
   logout(): void {
