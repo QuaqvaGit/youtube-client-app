@@ -3,8 +3,6 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-detailed-info-page',
   templateUrl: './detailed-info-page.component.html',
-  styleUrls: ['./detailed-info-page.component.scss']
+  styleUrls: ['./detailed-info-page.component.scss'],
 })
-export default class DetailedInfoPageComponent {
-
-}
+export default class DetailedInfoPageComponent {}

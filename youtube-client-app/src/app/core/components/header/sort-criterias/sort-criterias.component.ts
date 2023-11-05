@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import {
   SortCriterias,
   SortOrder,
@@ -20,6 +21,13 @@ export default class SortCriteriasComponent {
   currentCriteria: string = SortCriterias.Date;
 
   order: SortOrder = 'ASC';
+
+  constructor(route: ActivatedRoute) {
+    route.queryParams.subscribe((params) => {
+      this.currentCriteria = params['criteria'] || this.currentCriteria;
+      this.order = params['order'] || this.order;
+    });
+  }
 
   onCriteriaChange(newCriteria: string): void {
     this.currentCriteria = newCriteria;

@@ -8,7 +8,11 @@ import SharedModule from '../shared/shared.module';
 import NotFoundPageComponent from './pages/not-found-page/not-found-page.component';
 
 @NgModule({
-  declarations: [HeaderComponent, SortCriteriasComponent, NotFoundPageComponent],
+  declarations: [
+    HeaderComponent,
+    SortCriteriasComponent,
+    NotFoundPageComponent,
+  ],
   imports: [CommonModule, SharedModule, FormsModule],
   exports: [HeaderComponent, NotFoundPageComponent],
 })

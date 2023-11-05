@@ -4,10 +4,8 @@ import LoginPageComponent from './pages/login-page/login-page.component';
 import AuthRoutingModule from './auth-routing.module';
 
 @NgModule({
-  declarations: [
-    LoginPageComponent
-  ],
+  declarations: [LoginPageComponent],
   imports: [CommonModule, AuthRoutingModule],
-  exports: [LoginPageComponent]
+  exports: [LoginPageComponent],
 })
 export default class AuthModule {}

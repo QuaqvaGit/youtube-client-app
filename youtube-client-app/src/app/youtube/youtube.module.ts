@@ -14,7 +14,6 @@ import GetStatIconPipe from './pipes/get-stat-icon.pipe';
 import SortSearchPipe from './pipes/sort-search.pipe';
 import YoutubeRoutingModule from './youtube-routing.module';
 
-
 @NgModule({
   declarations: [
     DateColorDirective,

@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { SearchParams } from 'src/app/shared/models/search-params.model';
+import { Component, Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import {
   SortCriterias,
   SortOrder,
@@ -14,8 +14,6 @@ import {
 export default class HeaderComponent {
   @Input() appTitle = '';
 
-  @Output() search = new EventEmitter<SearchParams>();
-
   criteriasShown = false;
 
   sortCriteria: string = SortCriterias.Date;
@@ -23,6 +21,14 @@ export default class HeaderComponent {
   sortOrder: SortOrder = 'ASC';
 
   searchValue = '';
+
+  constructor(private router: Router, route: ActivatedRoute) {
+    route.queryParams.subscribe((queryParams) => {
+      this.sortCriteria = queryParams['criteria'] || this.sortCriteria;
+      this.sortOrder = queryParams['order'] || this.sortOrder;
+      this.searchValue = queryParams['searchValue'] || this.searchValue;
+    });
+  }
 
   onSettingsClick(): void {
     this.criteriasShown = !this.criteriasShown;
@@ -35,10 +41,6 @@ export default class HeaderComponent {
   }
 
   onSearch(): void {
-    this.search.emit({
-      searchValue: this.searchValue,
-      criteria: this.sortCriteria,
-      order: this.sortOrder,
-    });
+    this.router.navigateByUrl(`?searchValue=${this.searchValue}&criteria=${this.sortCriteria}&order=${this.sortOrder}`);
   }
 }
