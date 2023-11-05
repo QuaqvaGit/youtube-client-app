@@ -1,15 +1,23 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { SortCriterias } from 'src/app/shared/models/sort-criterias.model';
 import { SearchParams } from 'src/app/shared/models/search-params.model';
+import { SearchResponse } from '../models/search-response.model';
+import mockResponse from './mock-response.json';
 import { SearchItem } from '../models/search-item.model';
 
-@Pipe({
-  name: 'sortSearch',
+@Injectable({
+  providedIn: 'root'
 })
-export default class SortSearchPipe implements PipeTransform {
+export default class YoutubeService {
+  public getItems(params: SearchParams): SearchResponse {
+    const response = structuredClone(mockResponse);
+    response.items = this.applySearchParams(response.items, params);
+    return response;
+  }
+
   // eslint-disable-next-line class-methods-use-this
-  transform(value: SearchItem[], arg: SearchParams): SearchItem[] {
-    let { criteria } = arg;
+  private applySearchParams(items: SearchItem[], params: SearchParams): SearchItem[] {
+    let { criteria } = params;
     switch (criteria) {
       case SortCriterias.Date:
         criteria = 'snippet.publishedAt';
@@ -28,19 +36,19 @@ export default class SortSearchPipe implements PipeTransform {
       props.split('.').forEach((prop) => {
         result = result[prop];
       });
-      if (arg.criteria === SortCriterias.Date)
+      if (params.criteria === SortCriterias.Date)
         return new Date(result.toString()).getTime();
       return Number(result);
     };
-    value.sort((item1, item2) => {
+    items.sort((item1, item2) => {
       const item1Iterable = item1 as unknown as IterableObj;
       const item2Iterable = item2 as unknown as IterableObj;
       const result =
-        (arg.order === 'ASC' ? 1 : -1) *
+        (params.order === 'ASC' ? 1 : -1) *
         (propertiesApplier(item1Iterable, criteria) -
           propertiesApplier(item2Iterable, criteria));
       return result;
     });
-    return value;
+    return items;
   }
 }

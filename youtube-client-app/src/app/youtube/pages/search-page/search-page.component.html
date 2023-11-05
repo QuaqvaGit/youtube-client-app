@@ -1,4 +1,8 @@
-<app-search-results
-  *ngIf="searchParams"
-  [searchParams]="searchParams"
-></app-search-results>
+<div class="search-results" *ngIf="searchParams && searchResults">
+  <app-search-item
+    *ngFor="
+      let item of searchResults.items
+        | filterSearch : searchParams.searchValue"
+    [itemData]="item"
+  ></app-search-item>
+</div>

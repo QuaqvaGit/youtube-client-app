@@ -41,6 +41,8 @@ export default class HeaderComponent {
   }
 
   onSearch(): void {
-    this.router.navigateByUrl(`?searchValue=${this.searchValue}&criteria=${this.sortCriteria}&order=${this.sortOrder}`);
+    this.router.navigateByUrl(
+      `?searchValue=${this.searchValue}&criteria=${this.sortCriteria}&order=${this.sortOrder}`,
+    );
   }
 }
