@@ -1,7 +1,7 @@
 @import 'mixins';
 
 .search-results {
-  padding: 40px;
+  padding: 0 40px 40px;
 
   @include page();
 

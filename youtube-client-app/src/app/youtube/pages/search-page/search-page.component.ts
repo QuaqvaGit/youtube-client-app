@@ -17,6 +17,7 @@ export default class SearchPageComponent {
   constructor(route: ActivatedRoute, service: YoutubeService) {
     this.searchParams = route.snapshot.queryParams as SearchParams;
     route.queryParams.subscribe((params) => {
+      if (!Object.keys(params).length) return;
       this.searchParams = params as SearchParams;
       this.searchResults = service.getItems(this.searchParams);
     });

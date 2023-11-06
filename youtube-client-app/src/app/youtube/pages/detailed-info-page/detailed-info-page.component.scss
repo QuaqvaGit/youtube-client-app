@@ -2,15 +2,16 @@
 @import 'colors';
 
 .detailed-video {
-  @include page();
   @include shadow();
   @include flex($justify-content: flex-start, $align-items: stretch);
   flex-wrap: wrap;
 
-  width: max(80%, 300px);
+  width: max(80%, 280px);
 
   position: relative;
   margin: 0 auto;
+
+  @include page();
 
   background-color: $primary-light;
 
@@ -37,7 +38,11 @@
     width: max(30%, 300px);
     flex-grow: 1;
     padding: 10px;
-    @include flex($justify-content: space-between, $direction: column, $gap: 20px);
+    @include flex(
+      $justify-content: space-between,
+      $direction: column,
+      $gap: 20px
+    );
 
     border-bottom: 4px solid;
   }

@@ -83,5 +83,6 @@
 }
 
 @mixin page() {
+  margin-top: 50px;
   animation: appear $active-transition;
 }

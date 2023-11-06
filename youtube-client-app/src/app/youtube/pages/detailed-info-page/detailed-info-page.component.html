@@ -1,17 +1,32 @@
 <div class="detailed-video">
   <a class="detailed-video__go-back" routerLink="../">
-    <app-button [parameters]="{
+    <app-button
+      [parameters]="{
         defaultColors: { backgroundColor: '#a20000', fontColor: 'white' },
         hoverColors: {},
-      }"><i class="fa fa-less-than"></i></app-button>
+      }"
+      ><i class="fa fa-less-than"></i
+    ></app-button>
   </a>
-  <img src="{{ item?.snippet?.thumbnails?.maxres?.url }}" alt="Video thumbnail" class="detailed-video__thumbnail">
-  <div class="detailed-video__info" appDateColor="{{ item?.snippet?.publishedAt }}">
+  <img
+    src="{{ item?.snippet?.thumbnails?.maxres?.url }}"
+    alt="Video thumbnail"
+    class="detailed-video__thumbnail"
+  />
+  <div
+    class="detailed-video__info"
+    appDateColor="{{ item?.snippet?.publishedAt }}"
+  >
     <div class="detailed-video__title-wrapper">
       <h2 class="detailed-video__title">{{ item?.snippet?.title }}</h2>
-      <span class="detailed-video__date">{{ item?.snippet?.publishedAt | date : 'fullDate' }}</span>
+      <span class="detailed-video__date">{{
+        item?.snippet?.publishedAt | date : 'fullDate'
+      }}</span>
     </div>
     <p class="detailed-video__description">{{ item?.snippet?.description }}</p>
-    <app-video-statistics [statistics]="item?.statistics" [displayInOneLine]="true"></app-video-statistics>
+    <app-video-statistics
+      [statistics]="item?.statistics"
+      [displayInOneLine]="true"
+    ></app-video-statistics>
   </div>
 </div>
