@@ -14,8 +14,8 @@ export default class FilterSearchPipe implements PipeTransform {
     item.snippet.tags.map((tag) => tag.toLowerCase()).includes(searchValue) ||
     item.snippet.description.toLowerCase().includes(searchValue);
 
-  transform(items: SearchItem[], ...args: string[]): SearchItem[] {
-    const searchValue = args[0].toLowerCase();
-    return items.filter((item) => this.filterCallback(item, searchValue));
+  transform(items: SearchItem[], filterValue: string): SearchItem[] {
+    if (!filterValue) return items;
+    return items.filter((item) => this.filterCallback(item, filterValue.toLowerCase()));
   }
 }

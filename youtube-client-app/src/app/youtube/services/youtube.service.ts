@@ -25,7 +25,7 @@ export default class YoutubeService {
     items: SearchItem[],
     params: SearchParams,
   ): SearchItem[] {
-    let { criteria } = params;
+    let criteria = params.criteria as string;
     switch (criteria) {
       case SortCriterias.Date:
         criteria = 'snippet.publishedAt';

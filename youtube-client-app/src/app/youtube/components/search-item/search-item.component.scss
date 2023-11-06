@@ -12,6 +12,8 @@
   @include shadow();
   @include flex($direction: column);
 
+  animation: appear $active-transition;
+
   &__thumbnail {
     width: 100%;
   }

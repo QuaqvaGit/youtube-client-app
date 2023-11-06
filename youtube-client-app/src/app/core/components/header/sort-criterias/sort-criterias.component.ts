@@ -14,34 +14,40 @@ import {
 export default class SortCriteriasComponent {
   @Input({ required: true }) isShown = false;
 
-  @Output() sortByInput = new EventEmitter<SortParams>();
+  @Output() sortByInput = new EventEmitter<SortParams & { shouldSearch: boolean }>();
 
   criterias: string[] = Object.values(SortCriterias);
 
-  currentCriteria: string = SortCriterias.Date;
+  currentCriteria = SortCriterias.Date;
 
   order: SortOrder = 'ASC';
+
+  filterBy = '';
 
   constructor(route: ActivatedRoute) {
     route.queryParams.subscribe((params) => {
       this.currentCriteria = params['criteria'] || this.currentCriteria;
       this.order = params['order'] || this.order;
+      this.filterBy = params['filterBy'] || this.filterBy;
     });
   }
 
   onCriteriaChange(newCriteria: string): void {
-    this.currentCriteria = newCriteria;
-    this.sortByInput.emit({
-      criteria: this.currentCriteria,
-      order: this.order,
-    });
+    this.currentCriteria = newCriteria as SortCriterias;
+    this.emitParams();
   }
 
   onOrderChange(): void {
     this.order = this.order === 'ASC' ? 'DESC' : 'ASC';
+    this.emitParams();
+  }
+
+  emitParams(shouldSearch = true): void {
     this.sortByInput.emit({
       criteria: this.currentCriteria,
       order: this.order,
+      filterBy: this.filterBy,
+      shouldSearch
     });
   }
 }

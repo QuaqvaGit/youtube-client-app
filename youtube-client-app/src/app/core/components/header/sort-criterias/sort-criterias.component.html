@@ -39,10 +39,12 @@
       <i class="fa fa-arrow-up"></i>
     </app-button>
   </div>
+  <span>Filter by words:</span>
   <input
     type="text"
     class="sort-criterias__word-or-sentence"
-    (ngModel)="(currentCriteria)"
-    [attr.disabled]="currentCriteria !== 'Word or sentence' || undefined"
+    [(ngModel)]="filterBy"
+    (input)="emitParams(false)"
+    (keydown.enter)="emitParams()"
   />
 </div>

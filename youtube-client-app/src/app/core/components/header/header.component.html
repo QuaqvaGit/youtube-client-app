@@ -8,7 +8,7 @@
       <input
         type="text"
         class="header__searchbar"
-        [(ngModel)]="searchValue"
+        [(ngModel)]="searchParams.searchValue"
         name="searchValue"
       />
       <app-button
@@ -25,7 +25,7 @@
       >
         <i class="fa fa-sliders-h"></i>
       </app-button>
-      <input type="submit" class="header__search-submit" value="search" />
+      <input type="submit" class="header__search-submit" value="search"/>
     </div>
     <app-sort-criterias
       [isShown]="criteriasShown"
@@ -35,11 +35,14 @@
   <div class="header__account-info">
     <span class="header__account-name">Your name</span>
     <i class="fa fa-user"></i>
-    <app-button *ngIf="loginService.loggedIn"
-    [parameters]="{
-      defaultColors: { backgroundColor: '#a20000', fontColor: 'white' },
-      hoverColors: {}
-    }" (click)="onLogout()">
+    <app-button
+      *ngIf="loginService.loggedIn"
+      [parameters]="{
+        defaultColors: { backgroundColor: '#a20000', fontColor: 'white' },
+        hoverColors: {}
+      }"
+      (click)="onLogout()"
+    >
       Logout
     </app-button>
   </div>

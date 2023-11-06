@@ -1,9 +1,9 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import LoginService from 'src/app/auth/services/login.service';
+import { SearchParams } from 'src/app/shared/models/search-params.model';
 import {
   SortCriterias,
-  SortOrder,
   SortParams,
 } from '../../../shared/models/sort-criterias.model';
 
@@ -17,17 +17,25 @@ export default class HeaderComponent {
 
   criteriasShown = false;
 
-  sortCriteria: string = SortCriterias.Date;
+  searchParams: SearchParams;
 
-  sortOrder: SortOrder = 'ASC';
-
-  searchValue = '';
-
-  constructor(private router: Router, route: ActivatedRoute, public loginService: LoginService) {
+  constructor(
+    private router: Router,
+    route: ActivatedRoute,
+    public loginService: LoginService,
+  ) {
+    this.searchParams = {
+      searchValue: '',
+      order: 'ASC',
+      filterBy: '',
+      criteria: SortCriterias.Date
+    };
+  
     route.queryParams.subscribe((queryParams) => {
-      this.sortCriteria = queryParams['criteria'] || this.sortCriteria;
-      this.sortOrder = queryParams['order'] || this.sortOrder;
-      this.searchValue = queryParams['searchValue'] || this.searchValue;
+      this.searchParams.criteria = queryParams['criteria'] || this.searchParams.criteria;
+      this.searchParams.order = queryParams['order'] || this.searchParams.order;
+      this.searchParams.searchValue = queryParams['searchValue'] || this.searchParams.searchValue;
+      this.searchParams.filterBy = queryParams['filterBy'] || this.searchParams.filterBy;
     });
   }
 
@@ -35,15 +43,18 @@ export default class HeaderComponent {
     this.criteriasShown = !this.criteriasShown;
   }
 
-  onSortParamsChange(params: SortParams): void {
-    this.sortCriteria = params.criteria;
-    this.sortOrder = params.order;
-    this.onSearch();
+  onSortParamsChange(params: SortParams & {shouldSearch: boolean}): void {
+    this.searchParams = {
+      searchValue: this.searchParams.searchValue,
+      ...params
+    };
+    if (params.shouldSearch) this.onSearch();
   }
 
   onSearch(): void {
+    const url = Object.entries(this.searchParams).map((entry) => `${entry[0]}=${entry[1]}`).join('&');
     this.router.navigateByUrl(
-      `?searchValue=${this.searchValue}&criteria=${this.sortCriteria}&order=${this.sortOrder}`,
+      `?${url}`,
     );
   }
 
