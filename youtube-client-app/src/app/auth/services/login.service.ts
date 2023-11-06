@@ -22,14 +22,20 @@ export default class LoginService {
     const encryptedJson = localStorage.getItem(LoginService.TOKEN_STORAGE_KEY);
     if (!encryptedJson) this.user = null;
     else {
-      const userJson = CryptoJS.AES.decrypt(encryptedJson, LoginService.CYPHER_KEY).toString(CryptoJS.enc.Utf8);
+      const userJson = CryptoJS.AES.decrypt(
+        encryptedJson,
+        LoginService.CYPHER_KEY,
+      ).toString(CryptoJS.enc.Utf8);
       this.user = JSON.parse(userJson);
     }
   }
 
   login(login: string, password: string): void {
     this.user = { login, password };
-    const cipher = CryptoJS.AES.encrypt(JSON.stringify(this.user), LoginService.CYPHER_KEY);
+    const cipher = CryptoJS.AES.encrypt(
+      JSON.stringify(this.user),
+      LoginService.CYPHER_KEY,
+    );
     localStorage.setItem(LoginService.TOKEN_STORAGE_KEY, cipher.toString());
   }
 
