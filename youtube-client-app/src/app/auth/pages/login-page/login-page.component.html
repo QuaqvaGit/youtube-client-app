@@ -1,1 +1,15 @@
-<p>login-page works!</p>
+<div class="login-page">
+    <h1 class="login-page__title">Login</h1>
+    <form class="login-page__inputs" (submit)="onLogin()">
+       <label class="login-page__input-wrapper" for="login">
+         <span class="login-page__input-name">Login</span>
+         <input id="login" name="login" class="login-page__input" type="text" [(ngModel)]="login" required>
+       </label> 
+       <label class="login-page__input-wrapper" for="password">
+        <span class="login-page__input-name">Password</span>
+         <input id="password" name="password" class="login-page__input" type="password" [(ngModel)]="password" required>
+       </label>
+       <input class="login-page__submit" type="submit" value="Submit">
+    </form>
+</div>
+
