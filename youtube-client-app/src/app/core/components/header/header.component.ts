@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import LoginService from 'src/app/auth/services/login.service';
 import {
   SortCriterias,
   SortOrder,
@@ -22,7 +23,7 @@ export default class HeaderComponent {
 
   searchValue = '';
 
-  constructor(private router: Router, route: ActivatedRoute) {
+  constructor(private router: Router, route: ActivatedRoute, public loginService: LoginService) {
     route.queryParams.subscribe((queryParams) => {
       this.sortCriteria = queryParams['criteria'] || this.sortCriteria;
       this.sortOrder = queryParams['order'] || this.sortOrder;
@@ -44,5 +45,10 @@ export default class HeaderComponent {
     this.router.navigateByUrl(
       `?searchValue=${this.searchValue}&criteria=${this.sortCriteria}&order=${this.sortOrder}`,
     );
+  }
+
+  onLogout(): void {
+    this.loginService.logout();
+    this.router.navigateByUrl('login');
   }
 }

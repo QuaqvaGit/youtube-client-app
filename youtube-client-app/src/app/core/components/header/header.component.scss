@@ -23,8 +23,13 @@
   }
 
   @media (max-width: 1000px) {
-    &__app-name, &__account-name {
+    &__app-name,
+    &__account-name {
       display: none;
+    }
+
+    &__account-info i {
+      grid-column: span 2;
     }
   }
 
@@ -101,7 +106,15 @@
 
   &__account-info {
     height: 50px;
-    @include flex($gap: 10px);
+
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 10px;
+
+    justify-content: center;
+    align-items: center;
+
     text-align: center;
     i {
       font-size: 1.5em;
@@ -112,6 +125,10 @@
 
       border-radius: 5px;
       border: 2px solid $primary-red;
+    }
+
+    app-button {
+      grid-column: span 2;
     }
   }
 }

@@ -35,5 +35,12 @@
   <div class="header__account-info">
     <span class="header__account-name">Your name</span>
     <i class="fa fa-user"></i>
+    <app-button *ngIf="loginService.loggedIn"
+    [parameters]="{
+      defaultColors: { backgroundColor: '#a20000', fontColor: 'white' },
+      hoverColors: {}
+    }" (click)="onLogout()">
+      Logout
+    </app-button>
   </div>
 </header>
