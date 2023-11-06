@@ -6,6 +6,14 @@ export type SearchItem = {
   statistics: VideoStatistics;
 };
 
+export type VideoStatistics = {
+  viewCount: string;
+  likeCount: string;
+  dislikeCount: string;
+  favoriteCount: string;
+  commentCount: string;
+};
+
 type VideoSnippet = {
   publishedAt: string;
   channelId: string;
@@ -18,14 +26,6 @@ type VideoSnippet = {
   liveBroadcastContent: string;
   localized: VideoLocalizationInfo;
   defaultAudioLanguage: string;
-};
-
-type VideoStatistics = {
-  viewCount: string;
-  likeCount: string;
-  dislikeCount: string;
-  favoriteCount: string;
-  commentCount: string;
 };
 
 type VideoThumbnails = {

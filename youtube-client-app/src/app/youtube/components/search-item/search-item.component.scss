@@ -12,8 +12,6 @@
   @include shadow();
   @include flex($direction: column);
 
-  animation: appear $active-transition;
-
   &__thumbnail {
     width: 100%;
   }
@@ -33,20 +31,8 @@
     background-color: $primary-light;
   }
 
-  &__statistics {
-    width: 50%;
-    @include flex($gap: 10px 20px);
-    flex-wrap: wrap;
-  }
-
-  &__stat {
-    flex: 0 0 42%;
-    @include flex($justify-content: space-between, $gap: 5px);
-  }
-
-  &__stat-value {
-    flex-grow: 1;
-    text-align: center;
+  a {
+    width: 100%;
   }
 
   &__more {
@@ -55,5 +41,9 @@
     height: 30px;
 
     border-radius: 0 0 18px 18px;
+  }
+
+  app-video-statistics {
+    margin: 5px 0;
   }
 }

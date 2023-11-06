@@ -2,6 +2,8 @@
 @import 'colors';
 
 .login-page {
+  @include page();
+
   width: max(300px, 25vw);
   height: 100%;
 

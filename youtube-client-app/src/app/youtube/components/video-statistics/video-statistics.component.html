@@ -1,0 +1,10 @@
+<div class="video-statistics" [ngStyle]="{ 'flexWrap': displayInOneLine ? 'nowrap' : 'wrap' }">
+  <div
+    class="video-statistics__stat-wrapper"
+    *ngFor="let stat of statistics | keyvalue"
+    [ngStyle]="{ 'flex': displayInOneLine ? '0 0 auto' : '0 0 42%' }"
+  >
+    <i class="fa {{ stat.key | getStatIcon }}"></i>
+    <span class="video-statistics__value">{{ stat.value }}</span>
+  </div>
+</div>

@@ -3,7 +3,8 @@
 .search-results {
   padding: 40px;
 
-  @include flex();
+  @include page();
+
+  @include flex($gap: 40px);
   flex-wrap: wrap;
-  gap: 40px;
 }

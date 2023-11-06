@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import '../node_modules/normalize.css/normalize.css';
+@import 'mixins';
 @import 'variables';
 
 * {
@@ -19,5 +20,6 @@ html {
 
 main {
   padding-top: $header-height;
-  height: 100vh;
+  min-height: 100vh;
+  @include flex();
 }

@@ -5,21 +5,14 @@
     class="video-item__thumbnail"
   />
   <span class="video-item__name">{{ itemData?.snippet?.title }}</span>
-  <div class="video-item__statistics">
-    <div
-      class="video-item__stat"
-      *ngFor="let stat of itemData?.statistics | keyvalue"
-    >
-      <i class="fa {{ stat.key | getStatIcon }}"></i>
-      <span class="video-item__stat-value">{{ stat.value }}</span>
-    </div>
-  </div>
-  <app-button
+  <app-video-statistics [statistics]="itemData?.statistics"></app-video-statistics>
+  <a routerLink="./{{itemData?.id}}">
+    <app-button
     class="video-item__more"
     [parameters]="{
       defaultColors: { backgroundColor: '#a20000', fontColor: 'white' },
       hoverColors: {}
     }"
-    >More</app-button
-  >
+    >More</app-button>
+  </a>
 </div>

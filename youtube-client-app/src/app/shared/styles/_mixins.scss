@@ -1,4 +1,5 @@
 @import './variables';
+@import 'animations';
 
 @mixin flex(
   $justify-content: center,
@@ -79,4 +80,8 @@
   -webkit-line-clamp: $num;
   line-clamp: $num;
   -webkit-box-orient: vertical;
+}
+
+@mixin page() {
+  animation: appear $active-transition;
 }
