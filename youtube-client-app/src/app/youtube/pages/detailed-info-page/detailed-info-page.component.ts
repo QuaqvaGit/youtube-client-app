@@ -13,7 +13,9 @@ export default class DetailedInfoPageComponent {
 
   constructor(route: ActivatedRoute, service: YoutubeService) {
     route.params.subscribe((params) => {
-      this.item = service.getItemById(params['id']);
+      service.getItemById(params['id']).subscribe((item) => {
+        this.item = item;
+      });
     });
   }
 }

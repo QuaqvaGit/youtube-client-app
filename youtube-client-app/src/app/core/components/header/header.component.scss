@@ -65,6 +65,8 @@
 
     border-radius: $search-border-radius;
 
+    @include flex();
+
     &:has(input:focus) {
       outline: solid;
       outline-color: $secondary-blue;
@@ -74,34 +76,23 @@
   }
 
   &__searchbar {
-    width: max(85%, 120px);
+    width: 95%;
     height: 100%;
 
-    @include input(
-      $border-radius: $search-border-radius 0 0 $search-border-radius
-    );
-  }
-
-  &__search-submit {
-    padding: 10px;
-    width: max(15%, 30px);
-    height: 100%;
-
-    text-transform: capitalize;
-
-    @include button(
-      $bg-color: $primary-red,
-      $font-color: $primary-light,
-      $border-color: $primary-red,
-      $border-radius: 0 $search-border-radius $search-border-radius 0,
-      $hover-bg-color: $secondary-light
-    );
+    @include input($border-radius: $search-border-radius 0 0 $search-border-radius);
+    border-right: none;
   }
 
   &__show-settings {
-    position: absolute;
-    right: calc(15% + 5px);
-    top: calc(50% - 0.5em);
+    width: calc(max(5%, $search-border-radius) + 10px);
+    height: 100%;
+    background-color: $secondary-light;
+
+    padding-right: 10px;
+
+    border-radius: 0 $search-border-radius $search-border-radius 0;
+    border: 2px solid $primary-grey;
+    border-left: none;
   }
 
   &__account-info {

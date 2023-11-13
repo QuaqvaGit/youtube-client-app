@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import SharedModule from '../shared/shared.module';
+import YoutubeRoutingModule from './youtube-routing.module';
 
 import DateColorDirective from './directives/date-color.directive';
 
@@ -11,7 +12,6 @@ import DetailedInfoPageComponent from './pages/detailed-info-page/detailed-info-
 
 import FilterSearchPipe from './pipes/filter-search.pipe';
 import GetStatIconPipe from './pipes/get-stat-icon.pipe';
-import YoutubeRoutingModule from './youtube-routing.module';
 
 @NgModule({
   declarations: [

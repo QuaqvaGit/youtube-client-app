@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SearchParams } from 'src/app/shared/models/search-params.model';
 import YoutubeService from '../../services/youtube.service';
-import { SearchResponse } from '../../models/search-response.model';
+import { SearchItem } from '../../models/search-item.model';
 
 @Component({
   selector: 'app-search-page',
@@ -12,14 +12,16 @@ import { SearchResponse } from '../../models/search-response.model';
 export default class SearchPageComponent {
   searchParams?: SearchParams;
 
-  searchResults?: SearchResponse;
+  searchResults?: SearchItem[];
 
   constructor(route: ActivatedRoute, service: YoutubeService) {
     this.searchParams = route.snapshot.queryParams as SearchParams;
     route.queryParams.subscribe((params) => {
       if (!Object.keys(params).length) return;
       this.searchParams = params as SearchParams;
-      this.searchResults = service.getItems(this.searchParams);
+      service.getItems(this.searchParams).subscribe((response) => {
+        this.searchResults = response;
+      })
     });
   }
 }

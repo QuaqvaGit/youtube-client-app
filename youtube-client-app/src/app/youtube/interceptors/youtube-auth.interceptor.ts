@@ -1,0 +1,27 @@
+/* eslint-disable class-methods-use-this */
+import { Injectable } from '@angular/core';
+import {
+  HttpRequest,
+  HttpHandler,
+  HttpEvent,
+  HttpInterceptor
+} from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+@Injectable()
+export default class YoutubeAuthInterceptor implements HttpInterceptor {
+
+  private static AUTH_TOKEN = 'AIzaSyAxU5oK0CYOwfY35CwpDgYQRFDSaL-7Y1k';
+
+  private static BASE_URL = 'https://www.googleapis.com/youtube/v3';
+
+  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    let params = request.params.append('key', YoutubeAuthInterceptor.AUTH_TOKEN);
+    if (request.url === 'videos') params = params.append('part', 'snippet,statistics');
+    const requestWithToken = request.clone({
+      url: `${YoutubeAuthInterceptor.BASE_URL}/${request.url}`,
+      params
+    });
+    return next.handle(requestWithToken);
+  }
+}

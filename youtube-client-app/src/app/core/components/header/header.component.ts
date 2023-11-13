@@ -52,9 +52,16 @@ export default class HeaderComponent {
   }
 
   onSearch(): void {
-    const url = Object.entries(this.searchParams).map((entry) => `${entry[0]}=${entry[1]}`).join('&');
+    const url = Object.entries(this.searchParams)
+    .filter((entry) => entry[0] !== 'shouldSearch')
+    .map((entry) => `${entry[0]}=${entry[1]}`).join('&');
     this.router.navigateByUrl(
       `?${url}`,
+      {
+        state: {
+          
+        }
+      }
     );
   }
 

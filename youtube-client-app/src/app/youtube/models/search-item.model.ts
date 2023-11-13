@@ -1,7 +1,10 @@
 export type SearchItem = {
   kind: string;
   etag: string;
-  id: string;
+  id: {
+    kind: string;
+    videoId: string;
+  };
   snippet: VideoSnippet;
   statistics: VideoStatistics;
 };
