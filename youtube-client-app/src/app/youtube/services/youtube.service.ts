@@ -7,35 +7,43 @@ import { SearchParams } from 'src/app/shared/models/search-params.model';
 import { SearchResponse } from '../models/search-response.model';
 import { SearchItem } from '../models/search-item.model';
 
-
 @Injectable({
   providedIn: 'root',
 })
-
 export default class YoutubeService {
   public constructor(private httpClient: HttpClient) {}
 
   // eslint-disable-next-line class-methods-use-this
   public getItemById(id: string): Observable<SearchItem> {
-    return this.httpClient.get<SearchResponse>(`videos`, {
-      params: { id }
-    }).pipe(
-      map((response) => response.items[0])
-    );
+    return this.httpClient
+      .get<SearchResponse>(`videos`, {
+        params: { id },
+      })
+      .pipe(map((response) => response.items[0]));
   }
 
   public getItems(params: SearchParams): Observable<SearchItem[]> {
-    return this.httpClient.get<SearchResponse>(`search`, { params: {q : params.searchValue, maxResults: 16 } }).pipe(
-      map((response) => response.items.map((item) => item.id)),
-      flatMap((ids) => forkJoin(ids.map((id) => this.getItemById(id.videoId)))),
-      map((items) => this.applySearchParams(params, items))
-    );
+    return this.httpClient
+      .get<SearchResponse>(`search`, {
+        params: { 
+          q: params.searchValue, 
+          maxResults: 16, 
+          type: 'video',
+         },
+      })
+      .pipe(
+        map((response) => response.items.map((item) => item.id)),
+        flatMap((ids) =>
+          forkJoin(ids.map((id) => this.getItemById(id.videoId))),
+        ),
+        map((items) => this.applySearchParams(params, items))
+      );
   }
 
   // eslint-disable-next-line class-methods-use-this
   private applySearchParams(
     params: SearchParams,
-    items: SearchItem[]
+    items: SearchItem[],
   ): SearchItem[] {
     let criteria = params.criteria as string;
     switch (criteria) {

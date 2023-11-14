@@ -1,8 +1,6 @@
 <div class="search-results" *ngIf="searchParams && searchResults">
   <app-search-item
-    *ngFor="
-      let item of searchResults | filterSearch : searchParams.filterBy
-    "
+    *ngFor="let item of searchResults | filterSearch : searchParams.filterBy"
     [itemData]="item"
   ></app-search-item>
 </div>

@@ -4,10 +4,15 @@
 
 .sort-criterias {
   padding: 10px;
-  font-size: 0.75em;
   @include flex($gap: 20px);
 
   transition: opacity $active-transition;
+
+  font-size: 0.75em;
+
+  @media (max-width: 1050px) {
+    font-size: 0.6em;
+  }
 
   &__criteria-wrapper {
     @include flex();

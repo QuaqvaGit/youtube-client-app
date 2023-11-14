@@ -21,7 +21,7 @@ export default class SearchPageComponent {
       this.searchParams = params as SearchParams;
       service.getItems(this.searchParams).subscribe((response) => {
         this.searchResults = response;
-      })
+      });
     });
   }
 }

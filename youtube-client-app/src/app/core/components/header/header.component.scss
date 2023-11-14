@@ -79,7 +79,9 @@
     width: 95%;
     height: 100%;
 
-    @include input($border-radius: $search-border-radius 0 0 $search-border-radius);
+    @include input(
+      $border-radius: $search-border-radius 0 0 $search-border-radius
+    );
     border-right: none;
   }
 

@@ -4,23 +4,30 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable()
 export default class YoutubeAuthInterceptor implements HttpInterceptor {
-
-  private static AUTH_TOKEN = 'AIzaSyAxU5oK0CYOwfY35CwpDgYQRFDSaL-7Y1k';
+  private static AUTH_TOKEN = 'AIzaSyDZjk3nGrDI0yxC-rooLPyuaXSV1dmMg4E';
 
   private static BASE_URL = 'https://www.googleapis.com/youtube/v3';
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    let params = request.params.append('key', YoutubeAuthInterceptor.AUTH_TOKEN);
-    if (request.url === 'videos') params = params.append('part', 'snippet,statistics');
+  intercept(
+    request: HttpRequest<unknown>,
+    next: HttpHandler,
+  ): Observable<HttpEvent<unknown>> {
+    let params = request.params.append(
+      'key',
+      YoutubeAuthInterceptor.AUTH_TOKEN,
+    );
+    if (request.url === 'videos')
+      params = params.append('part', 'snippet,statistics');
+    else params.append('part', 'snippet');
     const requestWithToken = request.clone({
       url: `${YoutubeAuthInterceptor.BASE_URL}/${request.url}`,
-      params
+      params,
     });
     return next.handle(requestWithToken);
   }

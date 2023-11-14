@@ -20,6 +20,7 @@ html {
 
 main {
   padding-top: $header-height;
+  padding-bottom: 40px;
   min-height: 100vh;
   @include flex();
 }

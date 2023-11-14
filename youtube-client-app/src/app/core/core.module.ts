@@ -18,6 +18,13 @@ import YoutubeAuthInterceptor from '../youtube/interceptors/youtube-auth.interce
   ],
   imports: [CommonModule, HttpClientModule, SharedModule, FormsModule],
   exports: [HeaderComponent, NotFoundPageComponent],
-  providers: [HttpClientModule, { provide: HTTP_INTERCEPTORS, useClass: YoutubeAuthInterceptor, multi: true }]
+  providers: [
+    HttpClientModule,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: YoutubeAuthInterceptor,
+      multi: true,
+    },
+  ],
 })
 export default class CoreModule {}

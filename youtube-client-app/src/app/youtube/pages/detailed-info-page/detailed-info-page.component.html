@@ -9,7 +9,7 @@
     ></app-button>
   </a>
   <img
-    src="{{ item?.snippet?.thumbnails?.maxres?.url }}"
+    src="{{ item?.snippet?.thumbnails?.maxres?.url || item?.snippet?.thumbnails?.high?.url }}"
     alt="Video thumbnail"
     class="detailed-video__thumbnail"
   />

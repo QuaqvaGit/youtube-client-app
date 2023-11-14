@@ -30,8 +30,12 @@
   }
 
   &__thumbnail {
-    width: max(70%, 300px);
-    flex-grow: 1;
+    max-width: 70%;
+    object-fit: cover;
+
+    @media (max-width: 1250px) {
+      max-width: 100%;
+    }
   }
 
   &__info {
@@ -70,5 +74,6 @@
 
   &__description {
     text-align: justify;
+    word-break: break-all;
   }
 }

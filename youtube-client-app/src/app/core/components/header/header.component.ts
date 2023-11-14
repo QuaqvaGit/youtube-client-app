@@ -28,14 +28,17 @@ export default class HeaderComponent {
       searchValue: '',
       order: 'ASC',
       filterBy: '',
-      criteria: SortCriterias.Date
+      criteria: SortCriterias.Date,
     };
-  
+
     route.queryParams.subscribe((queryParams) => {
-      this.searchParams.criteria = queryParams['criteria'] || this.searchParams.criteria;
+      this.searchParams.criteria =
+        queryParams['criteria'] || this.searchParams.criteria;
       this.searchParams.order = queryParams['order'] || this.searchParams.order;
-      this.searchParams.searchValue = queryParams['searchValue'] || this.searchParams.searchValue;
-      this.searchParams.filterBy = queryParams['filterBy'] || this.searchParams.filterBy;
+      this.searchParams.searchValue =
+        queryParams['searchValue'] || this.searchParams.searchValue;
+      this.searchParams.filterBy =
+        queryParams['filterBy'] || this.searchParams.filterBy;
     });
   }
 
@@ -43,26 +46,22 @@ export default class HeaderComponent {
     this.criteriasShown = !this.criteriasShown;
   }
 
-  onSortParamsChange(params: SortParams & {shouldSearch: boolean}): void {
+  onSortParamsChange(params: SortParams & { shouldSearch: boolean }): void {
     this.searchParams = {
       searchValue: this.searchParams.searchValue,
-      ...params
+      ...params,
     };
     if (params.shouldSearch) this.onSearch();
   }
 
   onSearch(): void {
     const url = Object.entries(this.searchParams)
-    .filter((entry) => entry[0] !== 'shouldSearch')
-    .map((entry) => `${entry[0]}=${entry[1]}`).join('&');
-    this.router.navigateByUrl(
-      `?${url}`,
-      {
-        state: {
-          
-        }
-      }
-    );
+      .filter((entry) => entry[0] !== 'shouldSearch')
+      .map((entry) => `${entry[0]}=${entry[1]}`)
+      .join('&');
+    this.router.navigateByUrl(`?${url}`, {
+      state: {},
+    });
   }
 
   onLogout(): void {

@@ -1,10 +1,14 @@
 <div class="video-item" appDateColor="{{ itemData?.snippet?.publishedAt }}">
-  <img
-    src="{{ itemData?.snippet?.thumbnails?.maxres?.url }}"
+  <div class="video-item__thumbnail-name-wrapper">
+    <img
+    src="{{ itemData?.snippet?.thumbnails?.maxres?.url || itemData?.snippet?.thumbnails?.high?.url }}"
     alt="Video thumbnail"
     class="video-item__thumbnail"
-  />
-  <span class="video-item__name">{{ itemData?.snippet?.title }}</span>
+    />
+    <div class="video-item__name-wrapper">
+      <span class="video-item__name">{{ itemData?.snippet?.title }}</span>
+    </div>
+  </div>
   <app-video-statistics
     [statistics]="itemData?.statistics"
   ></app-video-statistics>

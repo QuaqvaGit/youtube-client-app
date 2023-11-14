@@ -14,7 +14,9 @@ import {
 export default class SortCriteriasComponent {
   @Input({ required: true }) isShown = false;
 
-  @Output() sortByInput = new EventEmitter<SortParams & { shouldSearch: boolean }>();
+  @Output() sortByInput = new EventEmitter<
+    SortParams & { shouldSearch: boolean }
+  >();
 
   criterias: string[] = Object.values(SortCriterias);
 
@@ -47,7 +49,7 @@ export default class SortCriteriasComponent {
       criteria: this.currentCriteria,
       order: this.order,
       filterBy: this.filterBy,
-      shouldSearch
+      shouldSearch,
     });
   }
 }
