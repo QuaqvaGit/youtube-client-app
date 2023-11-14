@@ -6,6 +6,7 @@ import {
   SortCriterias,
   SortParams,
 } from '../../../shared/models/sort-criterias.model';
+import SearchFilterService from '../../services/search-filter.service';
 
 @Component({
   selector: 'app-header',
@@ -23,6 +24,7 @@ export default class HeaderComponent {
     private router: Router,
     route: ActivatedRoute,
     public loginService: LoginService,
+    searchFilterService: SearchFilterService
   ) {
     this.searchParams = {
       searchValue: '',
@@ -40,6 +42,11 @@ export default class HeaderComponent {
       this.searchParams.filterBy =
         queryParams['filterBy'] || this.searchParams.filterBy;
     });
+
+    searchFilterService.stream.subscribe((searchValue) => {
+      this.searchParams.searchValue = searchValue;
+      this.onSearch();
+    })
   }
 
   onSettingsClick(): void {

@@ -5,12 +5,7 @@
   </a>
   <form class="header__search" (submit)="onSearch()">
     <div class="header__searchbar-wrapper">
-      <input
-        type="text"
-        class="header__searchbar"
-        [(ngModel)]="searchParams.searchValue"
-        name="searchValue"
-      />
+      <app-search-input></app-search-input>
       <app-button
         class="header__show-settings"
         (click)="onSettingsClick()"
@@ -32,7 +27,10 @@
     ></app-sort-criterias>
   </form>
   <div class="header__account-info-placeholder">
-    <div class="header__account-info" *ngIf="loginService.loggedIn | async else notLoggedInBlock">
+    <div
+      class="header__account-info"
+      *ngIf="loginService.loggedIn | async; else notLoggedInBlock"
+    >
       <span class="header__account-name">{{ loginService.userName }}</span>
       <i class="fa fa-user"></i>
       <app-button
@@ -47,12 +45,14 @@
     </div>
     <ng-template #notLoggedInBlock>
       <a routerLink="login">
-        <app-button class="header__not-logged-in"
-        [parameters]="{
-          defaultColors: { backgroundColor: '#a20000', fontColor: 'white' },
-          hoverColors: {}
-        }">
-        Login
+        <app-button
+          class="header__not-logged-in"
+          [parameters]="{
+            defaultColors: { backgroundColor: '#a20000', fontColor: 'white' },
+            hoverColors: {}
+          }"
+        >
+          Login
         </app-button>
       </a>
     </ng-template>
