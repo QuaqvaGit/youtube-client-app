@@ -97,6 +97,15 @@
     border-left: none;
   }
 
+  &__account-info-placeholder {
+    width: auto;
+    height: 100%;
+
+    &:not(:has(.header__account-info)) {
+      width: min(120px, 15%);
+    }
+  }
+
   &__account-info {
     display: grid;
     grid-template-columns: 2fr 1fr;

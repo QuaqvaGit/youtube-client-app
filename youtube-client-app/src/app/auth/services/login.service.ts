@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 // idk why it gives error, the library is listed in dependencies
 // eslint-disable-next-line import/no-extraneous-dependencies
 import CryptoJS from 'crypto-js';
@@ -12,10 +13,14 @@ export default class LoginService {
 
   private static CYPHER_KEY = 'ergergerga';
 
-  private user: UserData | null;
+  private user: UserData | null = null;
 
-  public get loggedIn(): boolean {
-    return this.user !== null;
+  public get userName(): string | null {
+    return this.user?.login || null;
+  }
+
+  public get loggedIn(): Observable<boolean> {
+    return new BehaviorSubject<boolean>(this.user !== null).asObservable();
   }
 
   constructor() {

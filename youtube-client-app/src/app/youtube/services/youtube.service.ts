@@ -25,18 +25,18 @@ export default class YoutubeService {
   public getItems(params: SearchParams): Observable<SearchItem[]> {
     return this.httpClient
       .get<SearchResponse>(`search`, {
-        params: { 
-          q: params.searchValue, 
-          maxResults: 16, 
+        params: {
+          q: params.searchValue,
+          maxResults: 16,
           type: 'video',
-         },
+        },
       })
       .pipe(
         map((response) => response.items.map((item) => item.id)),
         flatMap((ids) =>
           forkJoin(ids.map((id) => this.getItemById(id.videoId))),
         ),
-        map((items) => this.applySearchParams(params, items))
+        map((items) => this.applySearchParams(params, items)),
       );
   }
 
