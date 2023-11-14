@@ -61,6 +61,10 @@ export default class HeaderComponent {
     if (params.shouldSearch) this.onSearch();
   }
 
+  onLogoClick(): void {
+    this.router.navigateByUrl('');
+  }
+
   onSearch(): void {
     const url = Object.entries(this.searchParams)
       .filter((entry) => entry[0] !== 'shouldSearch')

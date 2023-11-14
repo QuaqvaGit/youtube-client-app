@@ -4,6 +4,10 @@ import { Directive, ElementRef, Input, Renderer2 } from '@angular/core';
   selector: '[appDateColor]',
 })
 export default class DateColorDirective {
+  private coloredProps = ['borderColor'];
+
+  private colorDeep = false;
+
   @Input('appDateColor') set publishDate(value: string) {
     const publishDate = new Date(value);
     const daysDiff = Math.floor(
@@ -21,8 +25,28 @@ export default class DateColorDirective {
     else if (monthsDiff > 1) color = 'yellow';
     else if (daysDiff >= 7) color = 'green';
 
-    this.renderer.setStyle(this.element.nativeElement, 'borderColor', color);
+    this.colorElement(this.element.nativeElement, color)
+    if (this.colorDeep) {
+      const {children} = this.element.nativeElement;
+      Array.from(children).forEach((child) => {
+        this.colorElement(child, color);
+      });
+    }
+  }
+
+  @Input() set colorProps(value: string[]) {
+    this.coloredProps = value;
+  }
+
+  @Input() set deepColor(value: boolean) {
+    this.colorDeep = value;
   }
 
   constructor(private element: ElementRef, private renderer: Renderer2) {}
+
+  private colorElement(element: unknown, color: string): void {
+    this.coloredProps.forEach((prop) => {
+      this.renderer.setStyle(element, prop, color);
+    });
+  }
 }

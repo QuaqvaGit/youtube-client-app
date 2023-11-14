@@ -2,9 +2,10 @@
   <a class="detailed-video__go-back" routerLink="../">
     <app-button
       [parameters]="{
-        defaultColors: { backgroundColor: '#a20000', fontColor: 'white' },
+        defaultColors: { backgroundColor: 'white', fontColor: 'white' },
         hoverColors: {},
       }"
+      appDateColor="{{ item?.snippet?.publishedAt }}" [colorProps]="['backgroundColor', 'borderColor']" [deepColor]="true"
       ><i class="fa fa-less-than"></i
     ></app-button>
   </a>

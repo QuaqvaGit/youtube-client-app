@@ -1,5 +1,7 @@
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
 <header class="header">
-  <a class="header__logo">
+  <a class="header__logo" (click)="onLogoClick()">
     <i class="fab fa-youtube"></i>
     <span class="header__app-name">{{ appTitle }}</span>
   </a>

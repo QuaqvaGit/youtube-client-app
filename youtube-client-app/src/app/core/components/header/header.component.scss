@@ -39,6 +39,7 @@
   }
 
   &__logo {
+    cursor: pointer;
     height: 50px;
     @include flex($gap: 10px);
     i {
