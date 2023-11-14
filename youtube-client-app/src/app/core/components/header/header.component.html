@@ -32,11 +32,10 @@
     ></app-sort-criterias>
   </form>
   <div class="header__account-info-placeholder">
-    <div class="header__account-info" *ngIf="loginService.loggedIn | async">
-      <span class="header__account-name">{{loginService.userName}}</span>
+    <div class="header__account-info" *ngIf="loginService.loggedIn | async else notLoggedInBlock">
+      <span class="header__account-name">{{ loginService.userName }}</span>
       <i class="fa fa-user"></i>
       <app-button
-        *ngIf="loginService.loggedIn"
         [parameters]="{
           defaultColors: { backgroundColor: '#a20000', fontColor: 'white' },
           hoverColors: {}
@@ -46,5 +45,16 @@
         Logout
       </app-button>
     </div>
+    <ng-template #notLoggedInBlock>
+      <a routerLink="login">
+        <app-button class="header__not-logged-in"
+        [parameters]="{
+          defaultColors: { backgroundColor: '#a20000', fontColor: 'white' },
+          hoverColors: {}
+        }">
+        Login
+        </app-button>
+      </a>
+    </ng-template>
   </div>
 </header>

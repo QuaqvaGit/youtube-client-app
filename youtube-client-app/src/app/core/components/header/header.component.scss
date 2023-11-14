@@ -1,6 +1,7 @@
 @import 'colors';
 @import 'mixins';
 @import 'variables';
+@import 'animations';
 
 .header {
   position: fixed;
@@ -107,6 +108,8 @@
   }
 
   &__account-info {
+    animation: appear $active-transition;
+
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-template-rows: 1fr 1fr;
@@ -130,5 +133,11 @@
     app-button {
       grid-column: span 2;
     }
+  }
+
+  &__not-logged-in {
+    display: block;
+    height: 70%;
+    animation: appear $active-transition;
   }
 }
