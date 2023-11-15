@@ -3,33 +3,33 @@
 @import 'variables';
 
 .input-wrapper {
-    width: 100%;
-    @include flex($align-items: flex-start, $direction: column, $gap: 5px);
+  width: 100%;
+  @include flex($align-items: flex-start, $direction: column, $gap: 5px);
 }
 
 .input-name {
-    margin-left: 0.5em;
-    text-transform: capitalize;
+  margin-left: 0.5em;
+  text-transform: capitalize;
 }
 
 .input-required-star {
-    color: $primary-red;
-    margin-left: 0.2em;
+  color: $primary-red;
+  margin-left: 0.2em;
 }
 
 .input {
-    width: 100%;
-    height: 40px;
-    @include input($border-radius: 10px);
+  width: 100%;
+  height: 40px;
+  @include input($border-radius: 10px);
 }
 
 .input-validation-message {
-    display: block;
-    height: 1em;
-    width: 100%;
+  display: block;
+  height: 1em;
+  width: 100%;
 
-    text-align: center;
-    color: $primary-red;
+  text-align: center;
+  color: $primary-red;
 
-    font-size: 0.8em;
+  font-size: 0.8em;
 }

@@ -1,6 +1,15 @@
 <div class="login-page">
   <app-form [form]="form" [title]="'Login'" [onSubmit]="onLogin.bind(this)">
-    <app-validated-input [name]="controlNames[0]" [inputControl]="form.get('login')!" [validationMessagePipe]="controlPipes[0]"></app-validated-input>
-    <app-validated-input [name]="controlNames[1]" [type]="'password'" [inputControl]="form.get('password')!" [validationMessagePipe]="controlPipes[1]"></app-validated-input>
+    <app-validated-input
+      [name]="controlNames[0]"
+      [inputControl]="form.get('login')!"
+      [validationMessagePipe]="controlPipes[0]"
+    ></app-validated-input>
+    <app-validated-input
+      [name]="controlNames[1]"
+      [type]="'password'"
+      [inputControl]="form.get('password')!"
+      [validationMessagePipe]="controlPipes[1]"
+    ></app-validated-input>
   </app-form>
 </div>

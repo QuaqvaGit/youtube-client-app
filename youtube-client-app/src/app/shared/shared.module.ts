@@ -7,10 +7,7 @@ import ValidatedInputComponent from './components/validated-input/validated-inpu
 import FormComponent from './components/form/form.component';
 
 @NgModule({
-  declarations: [
-    ValidatedInputComponent,
-    FormComponent
-  ],
+  declarations: [ValidatedInputComponent, FormComponent],
   imports: [CommonModule, ButtonComponent, ReactiveFormsModule],
   exports: [ButtonComponent, FormComponent, ValidatedInputComponent],
 })

@@ -77,7 +77,8 @@
     outline-color: $outline-color;
   }
 
-  transition: background-color $active-transition, outline-color $active-transition, border-color $active-transition;
+  transition: background-color $active-transition,
+    outline-color $active-transition, border-color $active-transition;
 
   &:disabled {
     background-color: $primary-light;

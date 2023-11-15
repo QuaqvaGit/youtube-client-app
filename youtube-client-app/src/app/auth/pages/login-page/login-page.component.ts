@@ -16,14 +16,21 @@ import PasswordValidationMessagePipe from '../../pipes/password-validation-messa
 export default class LoginPageComponent {
   form = this.formBuilder.group({
     login: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, passwordValidator]]
+    password: ['', [Validators.required, passwordValidator]],
   });
 
   controlNames = ['login', 'password'];
 
-  controlPipes = [new LoginValidationMessagePipe(), new PasswordValidationMessagePipe()];
+  controlPipes = [
+    new LoginValidationMessagePipe(),
+    new PasswordValidationMessagePipe(),
+  ];
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private service: LoginService) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private service: LoginService,
+  ) {}
 
   onLogin(): void {
     const { login, password } = this.form.value;

@@ -8,7 +8,7 @@ describe('ValidatedInputComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ValidatedInputComponent]
+      declarations: [ValidatedInputComponent],
     });
     fixture = TestBed.createComponent(ValidatedInputComponent);
     component = fixture.componentInstance;

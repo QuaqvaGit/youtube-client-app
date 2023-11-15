@@ -5,7 +5,7 @@ import ValidationMessagePipe from '../../pipes/validation-message.pipe';
 @Component({
   selector: 'app-validated-input',
   templateUrl: './validated-input.component.html',
-  styleUrls: ['./validated-input.component.scss']
+  styleUrls: ['./validated-input.component.scss'],
 })
 export default class ValidatedInputComponent implements OnInit {
   @Input({ required: true }) name!: string;

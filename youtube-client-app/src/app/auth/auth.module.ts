@@ -9,8 +9,18 @@ import PasswordValidationMessagePipe from './pipes/password-validation-message.p
 import SharedModule from '../shared/shared.module';
 
 @NgModule({
-  declarations: [LoginPageComponent, LoginMessagePipe, PasswordValidationMessagePipe],
-  imports: [CommonModule, SharedModule, AuthRoutingModule, FormsModule, ReactiveFormsModule],
+  declarations: [
+    LoginPageComponent,
+    LoginMessagePipe,
+    PasswordValidationMessagePipe,
+  ],
+  imports: [
+    CommonModule,
+    SharedModule,
+    AuthRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   exports: [LoginPageComponent],
 })
 export default class AuthModule {}

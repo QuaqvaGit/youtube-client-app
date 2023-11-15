@@ -2,17 +2,12 @@
 @import 'colors';
 @import 'variables';
 
-
 .form-wrapper {
   width: 100%;
 }
 
 .form {
-  @include flex(
-    $justify-content: space-around,
-    $direction: column,
-    $gap: 20px
-  );
+  @include flex($justify-content: space-around, $direction: column, $gap: 20px);
 }
 
 .form__title {
@@ -21,12 +16,12 @@
 }
 
 .form__submit {
-    width: 75%;
-    height: 30px;
-    @include button(
-      $bg-color: $primary-red,
-      $font-color: $secondary-light,
-      $border-color: $primary-red
-    );
-    text-transform: capitalize;
-  }
+  width: 75%;
+  height: 30px;
+  @include button(
+    $bg-color: $primary-red,
+    $font-color: $secondary-light,
+    $border-color: $primary-red
+  );
+  text-transform: capitalize;
+}

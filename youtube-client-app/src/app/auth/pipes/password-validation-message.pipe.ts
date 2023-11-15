@@ -4,13 +4,16 @@ import { ValidationErrors } from '@angular/forms';
 import ValidationMessagePipe from 'src/app/shared/pipes/validation-message.pipe';
 
 @Pipe({
-  name: 'passwordValidationMessage'
+  name: 'passwordValidationMessage',
 })
-export default class PasswordValidationMessagePipe extends ValidationMessagePipe implements PipeTransform {
+export default class PasswordValidationMessagePipe
+  extends ValidationMessagePipe
+  implements PipeTransform
+{
   override getErrorMessage(errors: ValidationErrors): string {
     if (errors['required']) return 'Please enter a password';
     let message;
-    switch(true) {
+    switch (true) {
       case errors['noEightChars']:
         message = 'eight characters';
         break;
@@ -32,5 +35,4 @@ export default class PasswordValidationMessagePipe extends ValidationMessagePipe
     }
     return `Your password is not strong enough. It should have at least ${message}`;
   }
-
 }

@@ -4,10 +4,10 @@ import { FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss']
+  styleUrls: ['./form.component.scss'],
 })
 export default class FormComponent {
-  @Input({required: true}) form!: FormGroup;
+  @Input({ required: true }) form!: FormGroup;
 
   @Input({ required: true }) onSubmit!: () => void;
 

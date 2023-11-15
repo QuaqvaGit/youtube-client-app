@@ -1,7 +1,7 @@
-import { AbstractControl, ValidatorFn } from "@angular/forms";
+import { AbstractControl, ValidatorFn } from '@angular/forms';
 
 const passwordValidator: ValidatorFn = (control: AbstractControl) => {
-  const {value} = control;
+  const { value } = control;
 
   const isEightChars = value.length >= 8;
 
@@ -13,15 +13,23 @@ const passwordValidator: ValidatorFn = (control: AbstractControl) => {
 
   const hasSpecialChars = /\W/.test(value);
 
-  if (isEightChars && hasUpperCase && hasLowerCase && hasLetters && hasNumbers && hasSpecialChars) return null;
+  if (
+    isEightChars &&
+    hasUpperCase &&
+    hasLowerCase &&
+    hasLetters &&
+    hasNumbers &&
+    hasSpecialChars
+  )
+    return null;
   return {
     noEightChars: !isEightChars,
     noUpperCase: !hasUpperCase,
     noLowerCase: !hasLowerCase,
     noLetters: !hasLetters,
     noNumbers: !hasNumbers,
-    noSpecialChars: !hasSpecialChars
-  }
+    noSpecialChars: !hasSpecialChars,
+  };
 };
 
 export default passwordValidator;
