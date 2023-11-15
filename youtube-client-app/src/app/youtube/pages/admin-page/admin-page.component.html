@@ -1,0 +1,26 @@
+<div class="admin-page">
+  <app-form [form]="form" [onSubmit]="onSubmit" [title]="'Create new card'">
+    <app-validated-input *ngFor="let control of mainInputs; let i = index"
+    [name]="names[i]"
+    [inputControl]="control"
+    [validationMessagePipe]="validationPipes[i]"
+    [type]="i < 4 ? 'text' : 'date'"
+  ></app-validated-input>
+  <fieldset class="admin-page__tags">
+    <h1 class="admin-page__tags-title">Tags</h1>
+    <app-validated-input *ngFor="let control of tagsForm.controls; let i = index"
+    [name]="'Tag'"
+    [inputControl]="control"
+    [validationMessagePipe]="validationPipes.at(-1)!"
+  ></app-validated-input>
+    <app-button [parameters]="{
+        defaultColors: { backgroundColor: '#a20000', fontColor: 'white' },
+        hoverColors: {}
+      }" *ngIf="tagsForm.controls.length < 5" (click)="onTagAdd()">+</app-button>
+  </fieldset>
+  <app-button [parameters]="{
+    defaultColors: { backgroundColor: '#a20000', fontColor: 'white' },
+    hoverColors: {}
+  }" (click)="onReset()">Reset</app-button>
+  </app-form>
+</div>

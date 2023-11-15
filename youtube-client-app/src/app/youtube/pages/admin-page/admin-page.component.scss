@@ -1,0 +1,16 @@
+@import 'mixins';
+@import 'colors';
+@import 'variables';
+
+.admin-page {
+  @include page();
+
+  app-form {
+    display: block;
+    width: max(70%, 280px);
+  }
+
+  app-validated-input {
+    width: 100%;
+  }
+}

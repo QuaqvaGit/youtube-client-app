@@ -12,6 +12,7 @@ import DetailedInfoPageComponent from './pages/detailed-info-page/detailed-info-
 
 import FilterSearchPipe from './pipes/filter-search.pipe';
 import GetStatIconPipe from './pipes/get-stat-icon.pipe';
+import AdminPageComponent from './pages/admin-page/admin-page.component';
 
 @NgModule({
   declarations: [
@@ -22,8 +23,9 @@ import GetStatIconPipe from './pipes/get-stat-icon.pipe';
     SearchPageComponent,
     DetailedInfoPageComponent,
     VideoStatisticsComponent,
+    AdminPageComponent,
   ],
   imports: [CommonModule, SharedModule, YoutubeRoutingModule],
-  exports: [SearchPageComponent, DetailedInfoPageComponent],
+  exports: [SearchPageComponent, DetailedInfoPageComponent, AdminPageComponent],
 })
 export default class YoutubeModule {}

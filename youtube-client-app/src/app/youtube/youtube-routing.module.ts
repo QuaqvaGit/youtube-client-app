@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import SearchPageComponent from './pages/search-page/search-page.component';
 import DetailedInfoPageComponent from './pages/detailed-info-page/detailed-info-page.component';
+import AdminPageComponent from './pages/admin-page/admin-page.component';
 
 const routes: Routes = [
   { path: '', component: SearchPageComponent },
+  { path: 'create', component: AdminPageComponent },
   { path: ':id', component: DetailedInfoPageComponent },
 ];
 
