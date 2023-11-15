@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
+import RouterLinkWatchService from 'src/app/core/services/router-link-watch.service';
+
 import YoutubeService from '../../services/youtube.service';
 import { SearchItem } from '../../models/search-item.model';
 
@@ -11,7 +13,10 @@ import { SearchItem } from '../../models/search-item.model';
 export default class DetailedInfoPageComponent {
   item?: SearchItem;
 
-  constructor(route: ActivatedRoute, service: YoutubeService) {
+  prevLinkParams: Params;
+
+  constructor(route: ActivatedRoute, service: YoutubeService, public linkWatchService: RouterLinkWatchService) {
+    this.prevLinkParams = Object.fromEntries(new URLSearchParams(linkWatchService.prevUrl.split('?')[1]).entries());
     route.params.subscribe((params) => {
       service.getItemById(params['id']).subscribe((item) => {
         this.item = item;

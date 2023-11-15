@@ -1,5 +1,5 @@
 <div class="detailed-video">
-  <a class="detailed-video__go-back" routerLink="../">
+  <a class="detailed-video__go-back" routerLink="../" [queryParams]="prevLinkParams">
     <app-button
       [parameters]="{
         defaultColors: { backgroundColor: 'white', fontColor: 'white' },
