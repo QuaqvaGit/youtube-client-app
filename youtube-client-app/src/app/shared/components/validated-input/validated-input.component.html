@@ -1,0 +1,8 @@
+<label class="input-wrapper">
+  <div class="input-name-wrapper">
+    <span class="input-name">{{name}}</span>
+    <span class="input-required-star" *ngIf="isRequired">*</span>
+  </div>
+  <input class="input" type="{{type}}" [name]="name" [formControl]="control">
+  <span class="input-validation-message">{{validationMessagePipe.transform(control.errors, control.dirty)}}</span>
+</label>

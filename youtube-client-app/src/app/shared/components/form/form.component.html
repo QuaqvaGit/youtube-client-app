@@ -1,0 +1,7 @@
+<div class="form-wrapper">
+  <h1 class="form__title" *ngIf="title">{{title}}</h1>
+  <form class="form" [formGroup]="form" (submit)="onSubmit()">
+    <ng-content></ng-content>
+    <input class="form__submit" type="submit" value="{{submitText}}" [disabled]="!form.valid"/>
+  </form>
+</div>

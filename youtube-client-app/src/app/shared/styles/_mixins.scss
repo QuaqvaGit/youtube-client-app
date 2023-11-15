@@ -54,23 +54,37 @@
   &:active {
     scale: 0.9;
   }
+
+  &:disabled {
+    cursor: default;
+    pointer-events: none;
+    background-color: $primary-grey;
+    border-color: $primary-grey;
+  }
 }
 
 @mixin input($border-radius: 20px, $outline-color: transparent) {
   background-color: $secondary-light;
-  padding-left: 1%;
+  padding-left: 2%;
   border: 2px solid $primary-grey;
   border-radius: $border-radius;
+
+  outline-color: transparent;
+  outline-width: 1px;
+  outline-offset: 1px;
+
   &:focus {
-    outline-offset: 1px;
     outline-color: $outline-color;
-    outline-width: 1px;
   }
 
-  transition: background-color $active-transition;
+  transition: background-color $active-transition, outline-color $active-transition, border-color $active-transition;
 
   &:disabled {
     background-color: $primary-light;
+  }
+
+  &.ng-dirty.ng-invalid {
+    border-color: $primary-red;
   }
 }
 

@@ -4,7 +4,7 @@ import SearchFilterService from 'src/app/core/services/search-filter.service';
 @Component({
   selector: 'app-search-input',
   templateUrl: './search-input.component.html',
-  styleUrls: ['./search-input.component.scss']
+  styleUrls: ['./search-input.component.scss'],
 })
 export default class SearchInputComponent {
   public constructor(private filterService: SearchFilterService) {}

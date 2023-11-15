@@ -1,28 +1,6 @@
 <div class="login-page">
-  <h1 class="login-page__title">Login</h1>
-  <form class="login-page__inputs" (submit)="onLogin()">
-    <label class="login-page__input-wrapper" for="login">
-      <span class="login-page__input-name">Login</span>
-      <input
-        id="login"
-        name="login"
-        class="login-page__input"
-        type="text"
-        [(ngModel)]="login"
-        required
-      />
-    </label>
-    <label class="login-page__input-wrapper" for="password">
-      <span class="login-page__input-name">Password</span>
-      <input
-        id="password"
-        name="password"
-        class="login-page__input"
-        type="password"
-        [(ngModel)]="password"
-        required
-      />
-    </label>
-    <input class="login-page__submit" type="submit" value="Submit" />
-  </form>
+  <app-form [form]="form" [title]="'Login'" [onSubmit]="onLogin.bind(this)">
+    <app-validated-input [name]="controlNames[0]" [inputControl]="form.get('login')!" [validationMessagePipe]="controlPipes[0]"></app-validated-input>
+    <app-validated-input [name]="controlNames[1]" [type]="'password'" [inputControl]="form.get('password')!" [validationMessagePipe]="controlPipes[1]"></app-validated-input>
+  </app-form>
 </div>

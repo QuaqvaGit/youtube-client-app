@@ -25,9 +25,9 @@ export default class DateColorDirective {
     else if (monthsDiff > 1) color = 'yellow';
     else if (daysDiff >= 7) color = 'green';
 
-    this.colorElement(this.element.nativeElement, color)
+    this.colorElement(this.element.nativeElement, color);
     if (this.colorDeep) {
-      const {children} = this.element.nativeElement;
+      const { children } = this.element.nativeElement;
       Array.from(children).forEach((child) => {
         this.colorElement(child, color);
       });

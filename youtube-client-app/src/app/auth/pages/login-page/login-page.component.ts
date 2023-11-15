@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormBuilder, Validators } from '@angular/forms';
+
 import LoginService from '../../services/login.service';
+import passwordValidator from '../../validators/password-validator';
+
+import LoginValidationMessagePipe from '../../pipes/login-message.pipe';
+import PasswordValidationMessagePipe from '../../pipes/password-validation-message.pipe';
 
 @Component({
   selector: 'app-login-page',
@@ -8,14 +14,20 @@ import LoginService from '../../services/login.service';
   styleUrls: ['./login-page.component.scss'],
 })
 export default class LoginPageComponent {
-  login = '';
+  form = this.formBuilder.group({
+    login: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, passwordValidator]]
+  });
 
-  password = '';
+  controlNames = ['login', 'password'];
 
-  constructor(private router: Router, private service: LoginService) {}
+  controlPipes = [new LoginValidationMessagePipe(), new PasswordValidationMessagePipe()];
+
+  constructor(private formBuilder: FormBuilder, private router: Router, private service: LoginService) {}
 
   onLogin(): void {
-    this.service.login(this.login, this.password);
+    const { login, password } = this.form.value;
+    this.service.login(login || '', password || '');
     this.router.navigate(['../']);
   }
 }

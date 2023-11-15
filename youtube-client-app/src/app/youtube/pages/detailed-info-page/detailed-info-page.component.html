@@ -5,7 +5,9 @@
         defaultColors: { backgroundColor: 'white', fontColor: 'white' },
         hoverColors: {},
       }"
-      appDateColor="{{ item?.snippet?.publishedAt }}" [colorProps]="['backgroundColor', 'borderColor']" [deepColor]="true"
+      appDateColor="{{ item?.snippet?.publishedAt }}"
+      [colorProps]="['backgroundColor', 'borderColor']"
+      [deepColor]="true"
       ><i class="fa fa-less-than"></i
     ></app-button>
   </a>
