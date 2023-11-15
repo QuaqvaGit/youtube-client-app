@@ -4,15 +4,17 @@ import { ValidationErrors } from '@angular/forms';
 import ValidationMessagePipe from './validation-message.pipe';
 
 @Pipe({
-  name: 'genericValidationMessage'
+  name: 'genericValidationMessage',
 })
-
-export default class GenericValidationMessagePipe extends ValidationMessagePipe implements PipeTransform {
+export default class GenericValidationMessagePipe
+  extends ValidationMessagePipe
+  implements PipeTransform
+{
   public inputName = '';
 
   override getErrorMessage(errors: ValidationErrors): string {
     let message;
-    switch(true) {
+    switch (true) {
       case errors['required']:
         message = `Please enter a ${this.inputName}`;
         break;

@@ -13,6 +13,7 @@
   height: $header-height;
 
   background-color: $primary-light;
+  border-bottom: 2px solid $primary-dark;
 
   @include flex($justify-content: space-between, $align-items: flex-start);
   padding: 20px 2.5vh;

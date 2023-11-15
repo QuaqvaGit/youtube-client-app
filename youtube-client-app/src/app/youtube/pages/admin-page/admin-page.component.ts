@@ -6,21 +6,33 @@ import pastDateValidator from '../../validators/past-date.validator';
 @Component({
   selector: 'app-admin-page',
   templateUrl: './admin-page.component.html',
-  styleUrls: ['./admin-page.component.scss']
+  styleUrls: ['./admin-page.component.scss'],
 })
 export default class AdminPageComponent {
   form = this.formBuilder.group({
-    title: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+    title: [
+      '',
+      [Validators.required, Validators.minLength(3), Validators.maxLength(20)],
+    ],
     description: ['', [Validators.maxLength(255)]],
     thumbnailLink: ['', [Validators.required]],
     videoLink: ['', [Validators.required]],
     creationDate: ['', [Validators.required, pastDateValidator]],
-    tags: this.formBuilder.array([this.formBuilder.control('', [Validators.required])])
+    tags: this.formBuilder.array([
+      this.formBuilder.control('', [Validators.required]),
+    ]),
   });
 
   mainInputs = Object.values(this.form.controls).slice(0, -1);
 
-  names = ['title', 'description', 'thumbnail link', 'video link', 'creation date', 'tag'];
+  names = [
+    'title',
+    'description',
+    'thumbnail link',
+    'video link',
+    'creation date',
+    'tag',
+  ];
 
   validationPipes = this.names.map((name) => {
     const pipe = new GenericValidationMessagePipe();

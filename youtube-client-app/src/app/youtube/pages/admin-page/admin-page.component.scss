@@ -1,16 +1,44 @@
 @import 'mixins';
 @import 'colors';
 @import 'variables';
+@import 'animations';
 
 .admin-page {
   @include page();
 
   app-form {
     display: block;
-    width: max(70%, 280px);
+    width: max(300px, 40vw);
+    background-color: $primary-light;
+    padding: 20px;
+    border-radius: 40px;
+    @include shadow();
   }
 
   app-validated-input {
+    width: max(80%, 250px);
+    &:first-of-type {
+      margin-top: 20px;
+    }
+  }
+
+  app-button {
+    width: max(30%, 150px);
+  }
+
+  &__tags-title {
+    margin-bottom: 0;
+  }
+
+  &__tags {
     width: 100%;
+    @include flex($direction: column);
+    border: none;
+    border-top: 2px solid $primary-dark;
+    border-bottom: 2px solid $primary-dark;
+
+    app-validated-input {
+      animation: appear $hover-transition;
+    }
   }
 }
