@@ -15,8 +15,14 @@ export default class DetailedInfoPageComponent {
 
   prevLinkParams: Params;
 
-  constructor(route: ActivatedRoute, service: YoutubeService, public linkWatchService: RouterLinkWatchService) {
-    this.prevLinkParams = Object.fromEntries(new URLSearchParams(linkWatchService.prevUrl.split('?')[1]).entries());
+  constructor(
+    route: ActivatedRoute,
+    service: YoutubeService,
+    public linkWatchService: RouterLinkWatchService,
+  ) {
+    this.prevLinkParams = Object.fromEntries(
+      new URLSearchParams(linkWatchService.prevUrl.split('?')[1]).entries(),
+    );
     route.params.subscribe((params) => {
       service.getItemById(params['id']).subscribe((item) => {
         this.item = item;

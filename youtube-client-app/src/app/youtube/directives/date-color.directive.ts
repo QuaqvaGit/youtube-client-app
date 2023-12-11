@@ -42,7 +42,10 @@ export default class DateColorDirective {
     this.colorDeep = value;
   }
 
-  constructor(private element: ElementRef, private renderer: Renderer2) {}
+  constructor(
+    private element: ElementRef,
+    private renderer: Renderer2,
+  ) {}
 
   private colorElement(element: unknown, color: string): void {
     this.coloredProps.forEach((prop) => {

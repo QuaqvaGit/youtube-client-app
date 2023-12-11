@@ -9,8 +9,11 @@
 
   border: 2px solid;
 
-  transition: background-color $hover-transition, color $hover-transition,
-    border-color $hover-transition, $active-transition;
+  transition:
+    background-color $hover-transition,
+    color $hover-transition,
+    border-color $hover-transition,
+    $active-transition;
 
   &:active {
     scale: 0.9 !important;

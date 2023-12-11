@@ -1,9 +1,13 @@
 <div class="detailed-video">
-  <a class="detailed-video__go-back" routerLink="../" [queryParams]="prevLinkParams">
+  <a
+    class="detailed-video__go-back"
+    routerLink="../"
+    [queryParams]="prevLinkParams"
+  >
     <app-button
       [parameters]="{
         defaultColors: { backgroundColor: 'white', fontColor: 'white' },
-        hoverColors: {},
+        hoverColors: {}
       }"
       appDateColor="{{ item?.snippet?.publishedAt }}"
       [colorProps]="['backgroundColor', 'borderColor']"
@@ -26,7 +30,7 @@
     <div class="detailed-video__title-wrapper">
       <h2 class="detailed-video__title">{{ item?.snippet?.title }}</h2>
       <span class="detailed-video__date">{{
-        item?.snippet?.publishedAt | date : 'fullDate'
+        item?.snippet?.publishedAt | date: 'fullDate'
       }}</span>
     </div>
     <p class="detailed-video__description">{{ item?.snippet?.description }}</p>

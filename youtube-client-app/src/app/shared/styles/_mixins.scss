@@ -35,8 +35,11 @@
   border: 2px solid $border-color;
   border-radius: $border-radius;
 
-  transition: background-color $hover-transition, color $hover-transition,
-    border-color $hover-transition, scale $active-transition;
+  transition:
+    background-color $hover-transition,
+    color $hover-transition,
+    border-color $hover-transition,
+    scale $active-transition;
   &:hover {
     background-color: $hover-bg-color;
     color: $hover-font-color;
@@ -77,8 +80,10 @@
     outline-color: $outline-color;
   }
 
-  transition: background-color $active-transition,
-    outline-color $active-transition, border-color $active-transition;
+  transition:
+    background-color $active-transition,
+    outline-color $active-transition,
+    border-color $active-transition;
 
   &:disabled {
     background-color: $primary-light;
