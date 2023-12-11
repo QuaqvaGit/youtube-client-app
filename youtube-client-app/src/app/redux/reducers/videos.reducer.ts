@@ -7,7 +7,7 @@ import addCustomVideo from '../actions/add-custom-video.action';
 import deleteCustomVideo from '../actions/delete-custom-video.action';
 import addToFavorites from '../actions/add-to-favorites.action';
 import removeFromFavorites from '../actions/remove-from-favorites.action';
-import addYoutubeVideo from '../actions/add-youtube-video.action';
+import { loadYoutubeVideosSuccess } from '../actions/load-youtube-videos.action';
 import clearVideos from '../actions/clear-youtube-videos.action';
 
 const addCustomVideoHandler = (
@@ -30,25 +30,29 @@ const addCustomVideoHandler = (
   };
 };
 
-const addYoutubeVideoHandler = (
+const loadYoutubeVideosHandler = (
   state: AppState,
   payload: {
-    video: Video;
-  } & TypedAction<'[Main page] Add youtube video'> & {
-      type: '[Main page] Add youtube video';
+    videos: Video[];
+  } & TypedAction<'[Youtube API] Videos loaded success'> & {
+      type: '[Youtube API] Videos loaded success';
     },
 ): AppState => {
-  const { youtubeVideoIds } = state;
-  const { video } = payload;
+  const { customVideoIds } = state;
+  const { videos } = payload;
 
-  if (youtubeVideoIds.includes(video.id)) return state;
+  const newVideos: { [videoId: string]: Video } = {};
+
+  videos.forEach((video) => {
+    newVideos[video.id] = video;
+  });
+  customVideoIds.forEach((id) => {
+    newVideos[id] = state.videos[id];
+  });
   return {
-    videos: {
-      ...state.videos,
-      [video.id]: video,
-    },
+    videos: newVideos,
     customVideoIds: state.customVideoIds,
-    youtubeVideoIds: state.youtubeVideoIds.concat(video.id),
+    youtubeVideoIds: videos.map((video) => video.id),
   };
 };
 
@@ -120,7 +124,7 @@ const removeFromFavoritesHandler = (
 const videosReducer = createReducer(
   initialState,
   on(addCustomVideo, addCustomVideoHandler),
-  on(addYoutubeVideo, addYoutubeVideoHandler),
+  on(loadYoutubeVideosSuccess, loadYoutubeVideosHandler),
   on(deleteCustomVideo, deleteCustomVideoHandler),
   on(clearVideos, clearYoutubeVideosHandler),
   on(addToFavorites, addToFavoritesHandler),
