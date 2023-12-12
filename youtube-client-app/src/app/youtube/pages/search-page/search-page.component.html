@@ -1,6 +1,6 @@
-<div class="search-results" *ngIf="searchParams && searchResults">
+<div class="search-results" *ngIf="searchParams">
   <app-search-item
-    *ngFor="let item of searchResults | filterSearch: searchParams.filterBy"
-    [itemData]="item"
+    *ngFor="let item of items$ | async | filterSearch: searchParams.filterBy"
+    [video]="item"
   ></app-search-item>
 </div>

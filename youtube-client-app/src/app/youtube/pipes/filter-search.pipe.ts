@@ -1,20 +1,22 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { SearchItem } from '../models/search-item.model';
+import { Video } from '../models/video.model';
 
 @Pipe({
   name: 'filterSearch',
 })
 export default class FilterSearchPipe implements PipeTransform {
   // eslint-disable-next-line class-methods-use-this
-  private filterCallback: (item: SearchItem, searchValue: string) => boolean = (
+  private filterCallback: (item: Video, searchValue: string) => boolean = (
     item,
     searchValue,
   ) =>
-    item.snippet.title.toLowerCase().includes(searchValue) ||
-    item.snippet.tags.map((tag) => tag.toLowerCase()).includes(searchValue) ||
-    item.snippet.description.toLowerCase().includes(searchValue);
+    item.title.toLowerCase().includes(searchValue) ||
+    item.tags.map((tag) => tag.toLowerCase()).includes(searchValue) ||
+    item.description?.toLowerCase().includes(searchValue) ||
+    false;
 
-  transform(items: SearchItem[], filterValue: string): SearchItem[] {
+  transform(items: Video[] | null, filterValue: string): Video[] | null {
+    if (!items) return null;
     if (!filterValue) return items;
     return items.filter((item) =>
       this.filterCallback(item, filterValue.toLowerCase()),

@@ -9,32 +9,27 @@
         defaultColors: { backgroundColor: 'white', fontColor: 'white' },
         hoverColors: {}
       }"
-      appDateColor="{{ item?.snippet?.publishedAt }}"
+      appDateColor="{{ item?.publishDate }}"
       [colorProps]="['backgroundColor', 'borderColor']"
       [deepColor]="true"
       ><i class="fa fa-less-than"></i
     ></app-button>
   </a>
   <img
-    src="{{
-      item?.snippet?.thumbnails?.maxres?.url ||
-        item?.snippet?.thumbnails?.high?.url
-    }}"
+    src="{{ item?.thumbnail }}"
     alt="Video thumbnail"
     class="detailed-video__thumbnail"
   />
-  <div
-    class="detailed-video__info"
-    appDateColor="{{ item?.snippet?.publishedAt }}"
-  >
+  <div class="detailed-video__info" appDateColor="{{ item?.publishDate }}">
     <div class="detailed-video__title-wrapper">
-      <h2 class="detailed-video__title">{{ item?.snippet?.title }}</h2>
+      <h2 class="detailed-video__title">{{ item?.title }}</h2>
       <span class="detailed-video__date">{{
-        item?.snippet?.publishedAt | date: 'fullDate'
+        item?.publishDate | date: 'fullDate'
       }}</span>
     </div>
-    <p class="detailed-video__description">{{ item?.snippet?.description }}</p>
+    <p class="detailed-video__description">{{ item?.description }}</p>
     <app-video-statistics
+      *ngIf="item?.statistics"
       [statistics]="item?.statistics"
       [displayInOneLine]="true"
     ></app-video-statistics>

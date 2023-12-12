@@ -1,8 +1,15 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+
+import selectAllVideos from 'src/app/redux/selectors/full-videos.selector';
+import clearVideos from 'src/app/redux/actions/clear-youtube-videos.action';
+import { loadYoutubeVideos } from 'src/app/redux/actions/load-youtube-videos.action';
+import { AppState } from 'src/app/redux/state.model';
+
 import { SearchParams } from 'src/app/shared/models/search-params.model';
-import YoutubeService from '../../services/youtube.service';
-import { SearchItem } from '../../models/search-item.model';
+import { Video } from '../../models/video.model';
 
 @Component({
   selector: 'app-search-page',
@@ -10,18 +17,18 @@ import { SearchItem } from '../../models/search-item.model';
   styleUrls: ['./search-page.component.scss'],
 })
 export default class SearchPageComponent {
+  items$: Observable<Video[]>;
+
   searchParams?: SearchParams;
 
-  searchResults?: SearchItem[];
-
-  constructor(route: ActivatedRoute, service: YoutubeService) {
+  constructor(route: ActivatedRoute, store: Store<AppState>) {
     this.searchParams = route.snapshot.queryParams as SearchParams;
+    this.items$ = store.select(selectAllVideos);
     route.queryParams.subscribe((params) => {
+      store.dispatch(clearVideos());
       if (!Object.keys(params).length) return;
       this.searchParams = params as SearchParams;
-      service.getItems(this.searchParams).subscribe((response) => {
-        this.searchResults = response;
-      });
+      store.dispatch(loadYoutubeVideos({ searchParams: this.searchParams }));
     });
   }
 

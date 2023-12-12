@@ -3,7 +3,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import RouterLinkWatchService from 'src/app/core/services/router-link-watch.service';
 
 import YoutubeService from '../../services/youtube.service';
-import { SearchItem } from '../../models/search-item.model';
+import { Video } from '../../models/video.model';
 
 @Component({
   selector: 'app-detailed-info-page',
@@ -11,7 +11,7 @@ import { SearchItem } from '../../models/search-item.model';
   styleUrls: ['./detailed-info-page.component.scss'],
 })
 export default class DetailedInfoPageComponent {
-  item?: SearchItem;
+  item?: Video;
 
   prevLinkParams: Params;
 

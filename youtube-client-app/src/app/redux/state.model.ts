@@ -1,13 +1,6 @@
-import { Video } from '../youtube/models/video.model';
+// eslint-disable-next-line import/no-cycle
+import { VideosState } from './reducers/videos.reducer';
 
 export type AppState = {
-  videos: { [videoId: string]: Video };
-  customVideoIds: string[];
-  youtubeVideoIds: string[];
-};
-
-export const initialState: AppState = {
-  videos: {},
-  customVideoIds: [],
-  youtubeVideoIds: [],
+  videos: VideosState;
 };

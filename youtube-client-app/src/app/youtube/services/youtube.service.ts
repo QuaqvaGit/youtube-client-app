@@ -23,6 +23,7 @@ export default class YoutubeService {
   }
 
   public getItems(params: SearchParams): Observable<Video[]> {
+    console.log(params);
     return this.httpClient
       .get<SearchResponse>(`search`, {
         params: {
@@ -32,10 +33,8 @@ export default class YoutubeService {
         },
       })
       .pipe(
-        map((response) => response.items.map((item) => item.id)),
-        flatMap((ids) =>
-          forkJoin(ids.map((id) => this.getItemById(id.videoId))),
-        ),
+        map((response) => response.items.map((item) => item.id.videoId)),
+        flatMap((ids) => forkJoin(ids.map((id) => this.getItemById(id)))),
         // map((items) => this.applySearchParams(params, items)),
       );
   }
@@ -43,15 +42,17 @@ export default class YoutubeService {
   // eslint-disable-next-line class-methods-use-this
   private searchItemToVideo(searchItem: SearchItem): Video {
     return {
-      id: searchItem.id.videoId,
+      id: searchItem.id.toString(),
       title: searchItem.snippet.title,
-      thumbnail: searchItem.snippet.thumbnails.maxres.url,
+      thumbnail: searchItem.snippet.thumbnails.maxres
+        ? searchItem.snippet.thumbnails.maxres.url
+        : searchItem.snippet.thumbnails.default.url,
       description: searchItem.snippet.description,
       isFavorite: false,
       publishDate: searchItem.snippet.publishedAt,
       statistics: searchItem.statistics,
       tags: searchItem.snippet.tags,
-      videoUrl: `https://www.youtube.com/watch?v=${searchItem.id.videoId}`,
+      videoUrl: `https://www.youtube.com/watch?v=${searchItem.id}`,
     };
   }
 }

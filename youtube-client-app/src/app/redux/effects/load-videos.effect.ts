@@ -2,7 +2,7 @@
 /* eslint-disable @ngrx/prefer-effect-callback-in-block-statement */
 import { inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { EMPTY, catchError, exhaustMap, map } from 'rxjs';
+import { catchError, exhaustMap, map, of } from 'rxjs';
 import { SearchParams } from 'src/app/shared/models/search-params.model';
 import YoutubeService from 'src/app/youtube/services/youtube.service';
 import {
@@ -14,10 +14,10 @@ const loadVideosEffects = createEffect(
   (actions$ = inject(Actions), youtubeService = inject(YoutubeService)) =>
     actions$.pipe(
       ofType(loadYoutubeVideos.type),
-      exhaustMap((params: SearchParams) =>
-        youtubeService.getItems(params).pipe(
+      exhaustMap((action: { type: string; searchParams: SearchParams }) =>
+        youtubeService.getItems(action.searchParams).pipe(
           map((videos) => loadYoutubeVideosSuccess({ videos })),
-          catchError(() => EMPTY),
+          catchError((error) => of(error)),
         ),
       ),
     ),

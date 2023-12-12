@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { SearchItem } from '../../models/search-item.model';
+import { Video } from '../../models/video.model';
 
 @Component({
   selector: 'app-search-item',
@@ -7,5 +7,5 @@ import { SearchItem } from '../../models/search-item.model';
   styleUrls: ['./search-item.component.scss'],
 })
 export default class SearchItemComponent {
-  @Input({ required: true }) itemData?: SearchItem;
+  @Input({ required: true }) video!: Video;
 }
