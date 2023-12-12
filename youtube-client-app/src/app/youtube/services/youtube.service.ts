@@ -23,7 +23,6 @@ export default class YoutubeService {
   }
 
   public getItems(params: SearchParams): Observable<Video[]> {
-    console.log(params);
     return this.httpClient
       .get<SearchResponse>(`search`, {
         params: {
