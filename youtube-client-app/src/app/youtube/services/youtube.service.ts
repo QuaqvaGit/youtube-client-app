@@ -34,7 +34,6 @@ export default class YoutubeService {
       .pipe(
         map((response) => response.items.map((item) => item.id.videoId)),
         flatMap((ids) => forkJoin(ids.map((id) => this.getItemById(id)))),
-        // map((items) => this.applySearchParams(params, items)),
       );
   }
 

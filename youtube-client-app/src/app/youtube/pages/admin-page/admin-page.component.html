@@ -1,5 +1,9 @@
 <div class="admin-page">
-  <app-form [form]="form" [onSubmit]="onSubmit" [title]="'Create new card'">
+  <app-form
+    [form]="form"
+    [onSubmit]="onSubmit.bind(this)"
+    [title]="'Create new card'"
+  >
     <app-validated-input
       *ngFor="let control of mainInputs; let i = index"
       [name]="names[i]"

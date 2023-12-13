@@ -22,6 +22,7 @@ export default class SearchPageComponent {
 
   searchParams?: SearchParams;
 
+  // eslint-disable-next-line @ngrx/no-typed-global-store
   constructor(route: ActivatedRoute, store: Store<AppState>) {
     this.searchParams = route.snapshot.queryParams as SearchParams;
     this.items$ = store
@@ -30,9 +31,11 @@ export default class SearchPageComponent {
         map((videos) => this.applySearchParams(this.searchParams!, videos)),
       );
     route.queryParams.subscribe((params) => {
+      // eslint-disable-next-line @ngrx/avoid-dispatching-multiple-actions-sequentially
       store.dispatch(clearVideos());
       if (!Object.keys(params).length) return;
       this.searchParams = params as SearchParams;
+      // eslint-disable-next-line @ngrx/avoid-dispatching-multiple-actions-sequentially
       store.dispatch(loadYoutubeVideos({ searchParams: this.searchParams }));
     });
   }

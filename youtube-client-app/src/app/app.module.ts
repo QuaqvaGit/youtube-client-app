@@ -4,6 +4,8 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
+import { AngularToastifyModule, ToastService } from 'angular-toastify';
+
 import AppRoutingModule from './app-routing.module';
 import AppComponent from './app.component';
 import CoreModule from './core/core.module';
@@ -26,8 +28,9 @@ import loadVideosEffect from './redux/effects/load-videos.effect';
       traceLimit: 75, // maximum stack trace frames to be stored (in case trace option was provided as true)
       connectInZone: true, // If set to true, the connection is established within the Angular zone
     }),
+    AngularToastifyModule,
   ],
-  providers: [],
+  providers: [ToastService],
   bootstrap: [AppComponent],
 })
 export default class AppModule {}
