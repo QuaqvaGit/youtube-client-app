@@ -7,7 +7,7 @@
   </a>
   <form class="header__search" (submit)="onSearch()">
     <div class="header__searchbar-wrapper">
-      <app-search-input></app-search-input>
+      <app-search-input [value]="searchParams.searchValue"></app-search-input>
       <app-button
         class="header__show-settings"
         (click)="onSettingsClick()"

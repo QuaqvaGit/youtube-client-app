@@ -8,6 +8,9 @@
     <div class="video-item__name-wrapper">
       <span class="video-item__name">{{ video.title }}</span>
     </div>
+    <button class="video-item__delete" *ngIf="isCustom" (click)="onDelete()">
+      <i class="fa fa-xmark"></i>
+    </button>
   </div>
   <app-video-statistics
     *ngIf="video.statistics"

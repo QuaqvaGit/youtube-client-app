@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import SearchFilterService from 'src/app/core/services/search-filter.service';
 
 @Component({
@@ -7,6 +7,8 @@ import SearchFilterService from 'src/app/core/services/search-filter.service';
   styleUrls: ['./search-input.component.scss'],
 })
 export default class SearchInputComponent {
+  @Input() value = '';
+
   public constructor(private filterService: SearchFilterService) {}
 
   onInput(value: string): void {

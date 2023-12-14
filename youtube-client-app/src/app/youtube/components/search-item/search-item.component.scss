@@ -11,6 +11,8 @@
 
   overflow: hidden;
 
+  position: relative;
+
   @include shadow();
   @include flex($justify-content: space-between, $direction: column);
 
@@ -60,5 +62,27 @@
 
   app-video-statistics {
     margin: 5px 0;
+  }
+
+  &__delete {
+    cursor: pointer;
+
+    position: absolute;
+    right: 20px;
+    top: 20px;
+
+    background-color: $primary-light;
+    color: $primary-red;
+    border: none;
+
+    padding: 5px;
+    font-size: 1.25em;
+    border-radius: 10px;
+
+    transition: scale $hover-transition;
+
+    &:hover {
+      scale: 1.1;
+    }
   }
 }

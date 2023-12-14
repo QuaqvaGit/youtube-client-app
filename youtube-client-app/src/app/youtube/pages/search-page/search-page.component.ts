@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, map } from 'rxjs';
+import { Observable, filter, map } from 'rxjs';
 import { Store } from '@ngrx/store';
 
 import selectAllVideos from 'src/app/redux/selectors/full-videos.selector';
@@ -25,11 +25,10 @@ export default class SearchPageComponent {
   // eslint-disable-next-line @ngrx/no-typed-global-store
   constructor(route: ActivatedRoute, store: Store<AppState>) {
     this.searchParams = route.snapshot.queryParams as SearchParams;
-    this.items$ = store
-      .select(selectAllVideos)
-      .pipe(
-        map((videos) => this.applySearchParams(this.searchParams!, videos)),
-      );
+    this.items$ = store.select(selectAllVideos).pipe(
+      filter(() => Boolean(this.searchParams?.searchValue)),
+      map((videos) => this.applySearchParams(this.searchParams!, videos)),
+    );
     route.queryParams.subscribe((params) => {
       // eslint-disable-next-line @ngrx/avoid-dispatching-multiple-actions-sequentially
       store.dispatch(clearVideos());

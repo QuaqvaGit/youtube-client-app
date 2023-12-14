@@ -11,7 +11,8 @@ export default class FilterSearchPipe implements PipeTransform {
     searchValue,
   ) =>
     item.title.toLowerCase().includes(searchValue) ||
-    item.tags.map((tag) => tag.toLowerCase()).includes(searchValue) ||
+    (item.tags &&
+      item.tags.map((tag) => tag.toLowerCase()).includes(searchValue)) ||
     item.description?.toLowerCase().includes(searchValue) ||
     false;
 
