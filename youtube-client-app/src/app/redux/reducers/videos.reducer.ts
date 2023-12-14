@@ -97,9 +97,13 @@ const addToFavoritesHandler = (
   const video = videos[id];
   if (!video) throw Error("Video with such id can't be added to favorites");
 
-  video.isFavorite = true;
+  const newVideos = structuredClone(videos);
+  newVideos[id].isFavorite = true;
 
-  return state;
+  return {
+    ...state,
+    videos: newVideos,
+  };
 };
 
 const removeFromFavoritesHandler = (
@@ -116,8 +120,12 @@ const removeFromFavoritesHandler = (
   const favoriteVideo = videos[id];
   if (!favoriteVideo) throw Error('No such video in favorites');
 
-  favoriteVideo.isFavorite = false;
-  return state;
+  const newVideos = structuredClone(videos);
+  newVideos[id].isFavorite = false;
+  return {
+    ...state,
+    videos: newVideos,
+  };
 };
 
 export type VideosState = {

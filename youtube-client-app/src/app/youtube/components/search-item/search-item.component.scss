@@ -64,7 +64,8 @@
     margin: 5px 0;
   }
 
-  &__delete {
+  &__delete,
+  &__favorite {
     cursor: pointer;
 
     position: absolute;
@@ -79,10 +80,14 @@
     font-size: 1.25em;
     border-radius: 10px;
 
-    transition: scale $hover-transition;
+    transition: scale $active-transition;
 
     &:hover {
-      scale: 1.1;
+      scale: 1.25;
+    }
+
+    &:active {
+      scale: 0.95;
     }
   }
 }

@@ -5,6 +5,9 @@ import deleteVideo from 'src/app/redux/actions/delete-custom-video.action';
 
 import { ToastService } from 'angular-toastify';
 
+import removeFromFavorites from 'src/app/redux/actions/remove-from-favorites.action';
+import addToFavorites from 'src/app/redux/actions/add-to-favorites.action';
+
 import { Video } from '../../models/video.model';
 
 @Component({
@@ -25,5 +28,11 @@ export default class SearchItemComponent {
   onDelete(): void {
     this.store.dispatch(deleteVideo({ id: this.video.id }));
     this.toastService.error('Video deleted successfully');
+  }
+
+  onFavoriteToggle(): void {
+    if (this.video.isFavorite)
+      this.store.dispatch(removeFromFavorites({ id: this.video.id }));
+    else this.store.dispatch(addToFavorites({ id: this.video.id }));
   }
 }

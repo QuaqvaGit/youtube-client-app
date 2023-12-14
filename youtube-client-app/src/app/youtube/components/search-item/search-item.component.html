@@ -8,9 +8,24 @@
     <div class="video-item__name-wrapper">
       <span class="video-item__name">{{ video.title }}</span>
     </div>
-    <button class="video-item__delete" *ngIf="isCustom" (click)="onDelete()">
+    <button
+      class="video-item__delete"
+      *ngIf="isCustom; else favoriteButton"
+      (click)="onDelete()"
+    >
       <i class="fa fa-xmark"></i>
     </button>
+    <ng-template #favoriteButton>
+      <button class="video-item__favorite" (click)="onFavoriteToggle()">
+        <i
+          [ngClass]="{
+            'fa-heart': true,
+            'fa-solid': video.isFavorite,
+            'fa-regular': !video.isFavorite
+          }"
+        ></i>
+      </button>
+    </ng-template>
   </div>
   <app-video-statistics
     *ngIf="video.statistics"
