@@ -10,7 +10,7 @@ import { Video } from '../models/video.model';
 export default class ApplySearchParamsPipe implements PipeTransform {
   transform(items: Video[] | null, arg: SearchParams): Video[] | null {
     if (!items) return null;
-    if (!arg) return items;
+    if (!Object.keys(arg).length) return items;
 
     const filtered = items.filter((item) =>
       this.filterCallback(item, arg.filterBy.toLowerCase()),

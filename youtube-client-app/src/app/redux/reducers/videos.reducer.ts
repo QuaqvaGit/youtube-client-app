@@ -26,6 +26,7 @@ const addCustomVideoHandler = (
     },
     customVideoIds: state.customVideoIds.concat(video.id),
     youtubeVideoIds: state.youtubeVideoIds,
+    favoriteVideos: state.favoriteVideos,
   };
 };
 
@@ -37,13 +38,16 @@ const loadYoutubeVideosHandler = (
       type: '[Youtube API] Videos loaded success';
     },
 ): VideosState => {
-  const { customVideoIds } = state;
+  const { customVideoIds, favoriteVideos } = state;
   const { videos } = payload;
 
   const newVideos: { [videoId: string]: Video } = {};
 
   videos.forEach((video) => {
-    newVideos[video.id] = video;
+    newVideos[video.id] = structuredClone(video);
+    newVideos[video.id].isFavorite = favoriteVideos[video.id]
+      ? favoriteVideos[video.id].isFavorite
+      : false;
   });
   customVideoIds.forEach((id) => {
     newVideos[id] = state.videos[id];
@@ -52,6 +56,7 @@ const loadYoutubeVideosHandler = (
     videos: newVideos,
     customVideoIds: state.customVideoIds,
     youtubeVideoIds: videos.map((video) => video.id),
+    favoriteVideos: state.favoriteVideos,
   };
 };
 
@@ -75,6 +80,7 @@ const deleteCustomVideoHandler = (
     videos: newVideos,
     customVideoIds: customVideoIds.filter((videoId) => videoId !== id),
     youtubeVideoIds: state.youtubeVideoIds,
+    favoriteVideos: state.favoriteVideos,
   };
 };
 
@@ -91,18 +97,24 @@ const addToFavoritesHandler = (
       type: '[Main page] Add to favorites';
     },
 ): VideosState => {
-  const { videos } = state;
+  const { videos, favoriteVideos } = state;
   const { id } = payload;
 
-  const video = videos[id];
+  const video = structuredClone(videos[id]);
   if (!video) throw Error("Video with such id can't be added to favorites");
 
-  const newVideos = structuredClone(videos);
-  newVideos[id].isFavorite = true;
+  video.isFavorite = true;
+
+  const newFavorites = structuredClone(favoriteVideos);
+  newFavorites[id] = video;
 
   return {
     ...state,
-    videos: newVideos,
+    videos: {
+      ...state.videos,
+      [id]: video,
+    },
+    favoriteVideos: newFavorites,
   };
 };
 
@@ -114,28 +126,34 @@ const removeFromFavoritesHandler = (
       type: '[Main page] Remove from favorites';
     },
 ): VideosState => {
-  const { videos } = state;
+  const { videos, favoriteVideos } = state;
   const { id } = payload;
 
-  const favoriteVideo = videos[id];
-  if (!favoriteVideo) throw Error('No such video in favorites');
+  if (!favoriteVideos[id]) throw Error('No such video in favorites');
+
+  const newFavorites = structuredClone(favoriteVideos);
+  delete newFavorites[id];
 
   const newVideos = structuredClone(videos);
   newVideos[id].isFavorite = false;
+
   return {
     ...state,
     videos: newVideos,
+    favoriteVideos: newFavorites,
   };
 };
 
 export type VideosState = {
   videos: { [videoId: string]: Video };
+  favoriteVideos: { [videoId: string]: Video };
   customVideoIds: string[];
   youtubeVideoIds: string[];
 };
 
 const videosInitialState = {
   videos: {},
+  favoriteVideos: {},
   customVideoIds: [],
   youtubeVideoIds: [],
 };

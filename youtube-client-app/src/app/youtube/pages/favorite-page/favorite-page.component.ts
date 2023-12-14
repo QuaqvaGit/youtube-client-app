@@ -22,6 +22,9 @@ export default class FavoritePageComponent {
     route: ActivatedRoute,
   ) {
     this.searchParams = route.snapshot.queryParams as SearchParams;
+    route.queryParams.subscribe((params) => {
+      this.searchParams = params as SearchParams;
+    });
     this.items$ = this.store.select(selectFavoriteVideos);
   }
 }

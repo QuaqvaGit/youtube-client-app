@@ -18,10 +18,9 @@ export default class YoutubeAuthInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler,
   ): Observable<HttpEvent<unknown>> {
-    let params = request.params.append(
-      'key',
-      YoutubeAuthInterceptor.AUTH_TOKEN,
-    );
+    let params = request.params
+      .append('key', YoutubeAuthInterceptor.AUTH_TOKEN)
+      .append('maxResults', 100);
     if (request.url === 'videos')
       params = params.append('part', 'snippet,statistics');
     else params.append('part', 'snippet');

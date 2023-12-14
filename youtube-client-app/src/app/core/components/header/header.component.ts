@@ -22,7 +22,7 @@ export default class HeaderComponent {
 
   constructor(
     private router: Router,
-    route: ActivatedRoute,
+    private route: ActivatedRoute,
     public loginService: LoginService,
     searchFilterService: SearchFilterService,
   ) {
@@ -66,11 +66,15 @@ export default class HeaderComponent {
   }
 
   onSearch(): void {
-    const url = Object.entries(this.searchParams)
-      .filter((entry) => entry[0] !== 'shouldSearch')
-      .map((entry) => `${entry[0]}=${entry[1]}`)
-      .join('&');
-    this.router.navigateByUrl(`?${url}`, {
+    const commands: string[] = ['videos'];
+    const isFavorite = this.router.url.includes('/favorite');
+    if (isFavorite) {
+      this.searchParams.searchValue = '';
+      commands.push('favorite');
+    }
+    this.router.navigate(commands, {
+      relativeTo: this.route,
+      queryParams: this.searchParams,
       state: {},
     });
   }
