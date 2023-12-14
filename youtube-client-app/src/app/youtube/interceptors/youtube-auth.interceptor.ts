@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export default class YoutubeAuthInterceptor implements HttpInterceptor {
-  private static AUTH_TOKEN = 'AIzaSyDZjk3nGrDI0yxC-rooLPyuaXSV1dmMg4E';
+  private static AUTH_TOKEN = 'AIzaSyAxU5oK0CYOwfY35CwpDgYQRFDSaL-7Y1k';
 
   private static BASE_URL = 'https://www.googleapis.com/youtube/v3';
 

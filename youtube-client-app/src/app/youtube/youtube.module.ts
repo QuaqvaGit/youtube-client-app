@@ -10,22 +10,22 @@ import SearchPageComponent from './pages/search-page/search-page.component';
 import VideoStatisticsComponent from './components/video-statistics/video-statistics.component';
 import DetailedInfoPageComponent from './pages/detailed-info-page/detailed-info-page.component';
 
-import FilterSearchPipe from './pipes/filter-search.pipe';
 import GetStatIconPipe from './pipes/get-stat-icon.pipe';
 import AdminPageComponent from './pages/admin-page/admin-page.component';
 import FavoritePageComponent from './pages/favorite-page/favorite-page.component';
+import ApplySearchParamsPipe from './pipes/apply-search-params.pipe';
 
 @NgModule({
   declarations: [
     DateColorDirective,
     SearchItemComponent,
-    FilterSearchPipe,
     GetStatIconPipe,
     SearchPageComponent,
     DetailedInfoPageComponent,
     VideoStatisticsComponent,
     AdminPageComponent,
     FavoritePageComponent,
+    ApplySearchParamsPipe,
   ],
   imports: [CommonModule, SharedModule, YoutubeRoutingModule],
   exports: [SearchPageComponent, DetailedInfoPageComponent, AdminPageComponent],

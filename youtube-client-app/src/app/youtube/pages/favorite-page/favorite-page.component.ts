@@ -3,6 +3,8 @@ import { Store } from '@ngrx/store';
 import selectFavoriteVideos from 'src/app/redux/selectors/favorite-videos.selector';
 import { Observable } from 'rxjs';
 import { AppState } from 'src/app/redux/state.model';
+import { ActivatedRoute } from '@angular/router';
+import { SearchParams } from 'src/app/shared/models/search-params.model';
 import { Video } from '../../models/video.model';
 
 @Component({
@@ -13,7 +15,13 @@ import { Video } from '../../models/video.model';
 export default class FavoritePageComponent {
   public items$: Observable<Video[]>;
 
-  public constructor(private store: Store<AppState>) {
+  public searchParams: SearchParams;
+
+  public constructor(
+    private store: Store<AppState>,
+    route: ActivatedRoute,
+  ) {
+    this.searchParams = route.snapshot.queryParams as SearchParams;
     this.items$ = this.store.select(selectFavoriteVideos);
   }
 }
