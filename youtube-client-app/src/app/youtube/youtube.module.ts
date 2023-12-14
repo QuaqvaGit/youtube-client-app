@@ -13,6 +13,7 @@ import DetailedInfoPageComponent from './pages/detailed-info-page/detailed-info-
 import FilterSearchPipe from './pipes/filter-search.pipe';
 import GetStatIconPipe from './pipes/get-stat-icon.pipe';
 import AdminPageComponent from './pages/admin-page/admin-page.component';
+import FavoritePageComponent from './pages/favorite-page/favorite-page.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import AdminPageComponent from './pages/admin-page/admin-page.component';
     DetailedInfoPageComponent,
     VideoStatisticsComponent,
     AdminPageComponent,
+    FavoritePageComponent,
   ],
   imports: [CommonModule, SharedModule, YoutubeRoutingModule],
   exports: [SearchPageComponent, DetailedInfoPageComponent, AdminPageComponent],

@@ -102,6 +102,13 @@
     &:not(:has(.header__account-info)) {
       width: min(120px, 15%);
     }
+
+    @include flex();
+  }
+
+  &__links {
+    margin-right: 10px;
+    @include flex($direction: column, $justify-content: space-between);
   }
 
   &__account-info {

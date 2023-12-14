@@ -28,7 +28,43 @@
       (sortByInput)="onSortParamsChange($event)"
     ></app-sort-criterias>
   </form>
+
   <div class="header__account-info-placeholder">
+    <nav class="header__links">
+      <a [routerLink]="'videos/create'" class="header__link">
+        <app-button
+          [parameters]="{
+            defaultColors: {
+              backgroundColor: 'transparent',
+              fontColor: '#a20000'
+            },
+            hoverColors: {
+              backgroundColor: 'transparent',
+              fontColor: '#a20000'
+            }
+          }"
+        >
+          <i class="fa fa-plus"></i>
+        </app-button>
+      </a>
+
+      <a [routerLink]="'videos/favorite'" class="header__link">
+        <app-button
+          [parameters]="{
+            defaultColors: {
+              backgroundColor: 'transparent',
+              fontColor: '#a20000'
+            },
+            hoverColors: {
+              backgroundColor: 'transparent',
+              fontColor: '#a20000'
+            }
+          }"
+        >
+          <i class="fa fa-heart"></i>
+        </app-button>
+      </a>
+    </nav>
     <div
       class="header__account-info"
       *ngIf="loginService.loggedIn | async; else notLoggedInBlock"
