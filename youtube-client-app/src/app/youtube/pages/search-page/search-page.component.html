@@ -1,7 +1,7 @@
 <div class="search-results" *ngIf="searchParams">
   <app-search-item
     *ngFor="
-      let item of (items$ | async | applySearchParams: searchParams)?.slice(
+      let item of (items$ | async)?.slice(
         (pageNumber - 1) * 20,
         pageNumber * 20
       )

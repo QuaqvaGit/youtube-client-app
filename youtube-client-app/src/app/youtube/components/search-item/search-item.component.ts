@@ -31,8 +31,12 @@ export default class SearchItemComponent {
   }
 
   onFavoriteToggle(): void {
-    if (this.video.isFavorite)
+    if (this.video.isFavorite) {
       this.store.dispatch(removeFromFavorites({ id: this.video.id }));
-    else this.store.dispatch(addToFavorites({ id: this.video.id }));
+      this.toastService.error('Video deleted from favorites');
+    } else {
+      this.store.dispatch(addToFavorites({ id: this.video.id }));
+      this.toastService.error('Video added to favorites');
+    }
   }
 }
