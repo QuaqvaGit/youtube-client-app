@@ -9,7 +9,9 @@ import { FormGroup } from '@angular/forms';
 export default class FormComponent {
   @Input({ required: true }) form!: FormGroup;
 
-  @Input({ required: true }) onSubmit!: (() => void) | (() => Promise<void>);
+  @Input({ required: true }) submitHandler!:
+    | (() => void)
+    | (() => Promise<void>);
 
   @Input() title = '';
 

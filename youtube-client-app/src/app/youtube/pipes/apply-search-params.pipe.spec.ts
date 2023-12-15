@@ -1,4 +1,4 @@
-import { ApplySearchParamsPipe } from './apply-search-params.pipe';
+import ApplySearchParamsPipe from './apply-search-params.pipe';
 
 describe('ApplySearchParamsPipe', () => {
   it('create an instance', () => {

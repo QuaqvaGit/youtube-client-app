@@ -27,7 +27,7 @@ export default class YoutubeService {
       .get<SearchResponse>(`search`, {
         params: {
           q: params.searchValue,
-          maxResults: 16,
+          maxResults: 100,
           type: 'video',
         },
       })

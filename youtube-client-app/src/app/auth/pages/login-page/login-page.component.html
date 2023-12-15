@@ -1,5 +1,9 @@
 <div class="login-page">
-  <app-form [form]="form" [title]="'Login'" [onSubmit]="onLogin.bind(this)">
+  <app-form
+    [form]="form"
+    [title]="'Login'"
+    [submitHandler]="onLogin.bind(this)"
+  >
     <app-validated-input
       [name]="controlNames[0]"
       [inputControl]="form.get('login')!"

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { SortCriteriasComponent } from './sort-criterias.component';
+import { RouterTestingModule } from '@angular/router/testing';
+import SortCriteriasComponent from './sort-criterias.component';
 
 describe('SortCriteriasComponent', () => {
   let component: SortCriteriasComponent;
@@ -9,6 +9,8 @@ describe('SortCriteriasComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [SortCriteriasComponent],
+      imports: [RouterTestingModule],
+      providers: [],
     });
     fixture = TestBed.createComponent(SortCriteriasComponent);
     component = fixture.componentInstance;

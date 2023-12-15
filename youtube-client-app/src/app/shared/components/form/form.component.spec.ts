@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { FormComponent } from './form.component';
+import { FormGroup } from '@angular/forms';
+import FormComponent from './form.component';
 
 describe('FormComponent', () => {
   let component: FormComponent;
@@ -12,6 +12,8 @@ describe('FormComponent', () => {
     });
     fixture = TestBed.createComponent(FormComponent);
     component = fixture.componentInstance;
+    component.form = new FormGroup([]);
+    component.submitHandler = () => {};
     fixture.detectChanges();
   });
 
