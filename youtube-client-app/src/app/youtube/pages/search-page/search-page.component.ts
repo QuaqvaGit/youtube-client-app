@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import selectAllVideos from 'src/app/redux/selectors/full-videos.selector';
 import clearVideos from 'src/app/redux/actions/clear-youtube-videos.action';
 import { loadYoutubeVideos } from 'src/app/redux/actions/load-youtube-videos.action';
+import selectFullVideosPageCount from 'src/app/redux/selectors/full-video-page-count.selector';
 import { AppState } from 'src/app/redux/state.model';
 
 import { SearchParams } from 'src/app/shared/models/search-params.model';
@@ -19,7 +20,11 @@ import { Video } from '../../models/video.model';
 export default class SearchPageComponent {
   items$: Observable<Video[]>;
 
+  pageCount$: Observable<number>;
+
   searchParams?: SearchParams;
+
+  pageNumber: number = 1;
 
   // eslint-disable-next-line @ngrx/no-typed-global-store
   constructor(route: ActivatedRoute, store: Store<AppState>) {
@@ -35,5 +40,11 @@ export default class SearchPageComponent {
       // eslint-disable-next-line @ngrx/avoid-dispatching-multiple-actions-sequentially
       store.dispatch(loadYoutubeVideos({ searchParams: this.searchParams }));
     });
+
+    this.pageCount$ = store.select(selectFullVideosPageCount);
+  }
+
+  onPageChange(page: number) {
+    this.pageNumber = page;
   }
 }

@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { AppState } from 'src/app/redux/state.model';
 import { ActivatedRoute } from '@angular/router';
 import { SearchParams } from 'src/app/shared/models/search-params.model';
+import selectFavoritesPageCount from 'src/app/redux/selectors/favorite-videos-page-count.selector';
 import { Video } from '../../models/video.model';
 
 @Component({
@@ -13,9 +14,15 @@ import { Video } from '../../models/video.model';
   styleUrl: './favorite-page.component.scss',
 })
 export default class FavoritePageComponent {
-  public items$: Observable<Video[]>;
+  public items$: Observable<Video[]> = this.store.select(selectFavoriteVideos);
+
+  public pageCount$: Observable<number> = this.store.select(
+    selectFavoritesPageCount,
+  );
 
   public searchParams: SearchParams;
+
+  public pageNumber: number = 1;
 
   public constructor(
     private store: Store<AppState>,
@@ -25,6 +32,9 @@ export default class FavoritePageComponent {
     route.queryParams.subscribe((params) => {
       this.searchParams = params as SearchParams;
     });
-    this.items$ = this.store.select(selectFavoriteVideos);
+  }
+
+  onPageChange(page: number) {
+    this.pageNumber = page;
   }
 }

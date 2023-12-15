@@ -1,6 +1,15 @@
 <div class="favorites">
   <app-search-item
-    *ngFor="let item of items$ | async | applySearchParams: searchParams"
+    *ngFor="
+      let item of (items$ | async | applySearchParams: searchParams)?.slice(
+        (pageNumber - 1) * 20,
+        pageNumber * 20
+      )
+    "
     [video]="item"
   ></app-search-item>
 </div>
+<app-pagination
+  [pagesCount]="(pageCount$ | async)!"
+  (pageNumber)="onPageChange($event)"
+></app-pagination>
