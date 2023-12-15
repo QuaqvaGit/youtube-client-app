@@ -32,24 +32,19 @@ export default class SearchPageComponent {
   constructor(route: ActivatedRoute, store: Store<AppState>) {
     this.searchParams = route.snapshot.queryParams as SearchParams;
 
-    const youtubeItems$ = store.select(selectYoutubeVideos).pipe(
-      filter(() => Boolean(this.searchParams?.searchValue)),
-      map(
-        (videos) =>
-          new ApplySearchParamsPipe().transform(videos, this.searchParams!)!,
-      ),
-    );
+    const youtubeItems$ = store.select(selectYoutubeVideos);
 
-    const customItems$ = store.select(selectCustomVideos).pipe(
-      filter(() => Boolean(this.searchParams?.searchValue)),
-      map(
-        (videos) =>
-          new ApplySearchParamsPipe().transform(videos, this.searchParams!)!,
-      ),
-    );
+    const customItems$ = store.select(selectCustomVideos);
 
     this.items$ = zip(customItems$, youtubeItems$).pipe(
-      map(([custom, youtube]) => [...custom, ...youtube]),
+      filter(() => Boolean(this.searchParams?.searchValue)),
+      map(([custom, youtube]) => {
+        const pipe = new ApplySearchParamsPipe();
+        return [
+          ...pipe.transform(custom, this.searchParams!)!,
+          ...pipe.transform(youtube, this.searchParams!)!,
+        ];
+      }),
     );
 
     route.queryParams.subscribe((params) => {
