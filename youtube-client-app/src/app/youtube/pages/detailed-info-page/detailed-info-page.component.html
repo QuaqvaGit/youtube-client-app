@@ -1,4 +1,4 @@
-<div class="detailed-video">
+<div class="detailed-video" *ngIf="item$ | async as item">
   <a
     class="detailed-video__go-back"
     routerLink="../"
@@ -6,8 +6,8 @@
   >
     <app-button
       [parameters]="{
-        defaultColors: { backgroundColor: 'white', fontColor: 'white' },
-        hoverColors: {}
+        defaultColors: { backgroundColor: '', fontColor: 'red' },
+        hoverColors: { backgroundColor: 'white', fontColor: 'red' }
       }"
       appDateColor="{{ item?.publishDate }}"
       [colorProps]="['backgroundColor', 'borderColor']"

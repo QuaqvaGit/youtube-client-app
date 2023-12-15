@@ -31,7 +31,7 @@
     *ngIf="video.statistics"
     [statistics]="video.statistics"
   ></app-video-statistics>
-  <a routerLink="./{{ video.id }}">
+  <a routerLink="/videos/{{ video.id }}">
     <app-button
       class="video-item__more"
       [parameters]="{
