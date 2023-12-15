@@ -27,4 +27,26 @@ describe('SearchItemComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should render title properly', () => {
+    expect(
+      fixture.nativeElement.querySelector('.video-item__name').textContent,
+    ).toBe(component.video.title);
+  });
+
+  it('should render favorite button by default', () => {
+    expect(fixture.nativeElement.querySelector('.fa-heart')).toBeTruthy();
+  });
+
+  it('should render delete button if custom', () => {
+    component.isCustom = true;
+    fixture.detectChanges();
+    expect(fixture.nativeElement.querySelector('.fa-xmark')).toBeTruthy();
+  });
+
+  it('should have a link to detailed page', () => {
+    expect(
+      fixture.nativeElement.querySelector('.video-item__more'),
+    ).toBeTruthy();
+  });
 });
