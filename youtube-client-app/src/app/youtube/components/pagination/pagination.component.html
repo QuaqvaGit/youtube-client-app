@@ -1,0 +1,12 @@
+<div class="pagination">
+  <app-button
+    [parameters]="{
+      defaultColors: { backgroundColor: '#a20000', fontColor: 'white' },
+      hoverColors: { backgroundColor: '#bd0303', fontColor: 'white' }
+    }"
+    class="pagination__page"
+    *ngFor="let page of pages"
+    (click)="onPageSelect(page)"
+    >{{ page }}</app-button
+  >
+</div>

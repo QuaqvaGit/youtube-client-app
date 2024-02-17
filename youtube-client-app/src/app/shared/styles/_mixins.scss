@@ -1,0 +1,109 @@
+@import './variables';
+@import 'animations';
+
+@mixin flex(
+  $justify-content: center,
+  $align-items: center,
+  $direction: row,
+  $gap: none
+) {
+  display: flex;
+  justify-content: $justify-content;
+  align-items: $align-items;
+  flex-direction: $direction;
+  gap: $gap;
+}
+
+@mixin shadow() {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+@mixin button(
+  $bg-color,
+  $font-color,
+  $border-color: $font-color,
+  $hover-bg-color: $font-color,
+  $hover-font-color: $bg-color,
+  $hover-border-color: $border-color,
+  $border-radius: 20px,
+  $expand-on-hover: false,
+  $shadow-on-hover: false
+) {
+  cursor: pointer;
+  background-color: $bg-color;
+  color: $font-color;
+  border: 2px solid $border-color;
+  border-radius: $border-radius;
+
+  transition:
+    background-color $hover-transition,
+    color $hover-transition,
+    border-color $hover-transition,
+    scale $active-transition;
+  &:hover {
+    background-color: $hover-bg-color;
+    color: $hover-font-color;
+    border-color: $hover-border-color;
+
+    @if ($expand-on-hover) {
+      scale: 1.1;
+    }
+
+    @if ($shadow-on-hover) {
+      @include shadow();
+    }
+  }
+
+  &:active {
+    scale: 0.9;
+  }
+
+  &:disabled {
+    cursor: default;
+    pointer-events: none;
+    background-color: $primary-grey;
+    border-color: $primary-grey;
+  }
+}
+
+@mixin input($border-radius: 20px, $outline-color: transparent) {
+  background-color: $secondary-light;
+  padding-left: 2%;
+  border: 2px solid $primary-grey;
+  border-radius: $border-radius;
+
+  outline-color: transparent;
+  outline-width: 1px;
+  outline-offset: 1px;
+
+  &:focus {
+    outline-color: $outline-color;
+  }
+
+  transition:
+    background-color $active-transition,
+    outline-color $active-transition,
+    border-color $active-transition;
+
+  &:disabled {
+    background-color: $primary-light;
+  }
+
+  &.ng-dirty.ng-invalid {
+    border-color: $primary-red;
+  }
+}
+
+@mixin clamp-lines($num) {
+  display: -webkit-box;
+  /* autoprefixer: ignore next */
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $num;
+  line-clamp: $num;
+  overflow: hidden;
+}
+
+@mixin page() {
+  margin-top: 50px;
+  animation: appear $active-transition;
+}

@@ -1,0 +1,20 @@
+@import 'mixins';
+
+.pagination {
+  width: 75%;
+  overflow-x: scroll;
+
+  margin: 20px auto 0;
+
+  @include flex($gap: 20px);
+
+  &__page {
+    width: 40px;
+    font-size: 1.25em;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

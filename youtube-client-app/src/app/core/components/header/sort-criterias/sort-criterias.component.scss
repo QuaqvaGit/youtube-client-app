@@ -1,0 +1,41 @@
+@import 'colors';
+@import 'mixins';
+@import 'animations';
+
+.sort-criterias {
+  padding: 10px;
+  @include flex($gap: 20px);
+
+  transition: opacity $active-transition;
+
+  font-size: 0.75em;
+
+  @media (max-width: 1050px) {
+    font-size: 0.6em;
+  }
+
+  &__criteria-wrapper {
+    @include flex();
+  }
+
+  &__criteria_active {
+    border-bottom: 2px solid $primary-red;
+    pointer-events: none;
+  }
+
+  &__order {
+    margin-left: 5px;
+    animation: appear $active-transition forwards;
+
+    rotate: 0;
+    transition: rotate $active-transition;
+
+    &_descending {
+      rotate: 180deg;
+    }
+  }
+
+  &__word-or-sentence {
+    @include input($border-radius: 10px, $outline-color: $secondary-blue);
+  }
+}

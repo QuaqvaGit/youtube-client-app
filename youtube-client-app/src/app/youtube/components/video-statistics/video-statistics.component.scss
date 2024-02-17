@@ -1,0 +1,18 @@
+@import 'mixins';
+
+.video-statistics {
+  margin: 0 auto;
+  width: 55%;
+  height: 100%;
+
+  @include flex($gap: 10px 20px);
+
+  &__stat-wrapper {
+    @include flex($justify-content: space-between, $gap: 5px);
+  }
+
+  &__value {
+    flex-grow: 1;
+    text-align: center;
+  }
+}

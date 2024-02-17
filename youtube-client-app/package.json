@@ -1,0 +1,75 @@
+{
+  "name": "youtube-client-app",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "prettier": "prettier --write \"**/*.{js,json,css,scss,less,md,ts,html,component.html}\"",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "lint": "ng lint",
+    "lint:fix": "ng lint --fix",
+    "prepare": "cd .. && husky install youtube-client-app/.husky"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^17.0.6",
+    "@angular/common": "^17.0.6",
+    "@angular/compiler": "^17.0.6",
+    "@angular/core": "^17.0.6",
+    "@angular/forms": "^17.0.6",
+    "@angular/platform-browser": "^17.0.6",
+    "@angular/platform-browser-dynamic": "^17.0.6",
+    "@angular/router": "^17.0.6",
+    "@ngrx/effects": "^17.0.1",
+    "@ngrx/store": "^17.0.1",
+    "@ngrx/store-devtools": "^17.0.1",
+    "@types/crypto-js": "^4.1.3",
+    "angular-toastify": "^1.0.6",
+    "crypto-js": "^4.2.0",
+    "husky": "^8.0.3",
+    "normalize.css": "^8.0.1",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.14.2"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^17.0.6",
+    "@angular-eslint/builder": "17.1.1",
+    "@angular-eslint/eslint-plugin": "17.1.1",
+    "@angular-eslint/eslint-plugin-template": "17.1.1",
+    "@angular-eslint/schematics": "17.1.1",
+    "@angular-eslint/template-parser": "17.1.1",
+    "@angular/cli": "^17.0.6",
+    "@angular/compiler-cli": "^17.0.6",
+    "@ngrx/eslint-plugin": "^17.0.1",
+    "@schuchard/prettier": "^5.1.0",
+    "@types/jest": "^29.5.11",
+    "@typescript-eslint/eslint-plugin": "^6.10.0",
+    "@typescript-eslint/parser": "^6.10.0",
+    "eslint": "^8.53.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-config-prettier": "^9.0.0",
+    "husky": "latest",
+    "jest": "^29.7.0",
+    "jest-preset-angular": "^13.1.4",
+    "lint-staged": "latest",
+    "prettier": "latest",
+    "ts-node": "^10.9.2",
+    "tslint-config-prettier": "latest",
+    "typescript": "~5.2.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,json,css,scss,less,md,ts,html,component.html}": [
+      "prettier --write"
+    ]
+  }
+}

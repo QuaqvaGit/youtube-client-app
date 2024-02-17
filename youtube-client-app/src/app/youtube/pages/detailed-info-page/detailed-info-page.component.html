@@ -1,0 +1,37 @@
+<div class="detailed-video" *ngIf="item$ | async as item">
+  <a
+    class="detailed-video__go-back"
+    routerLink="../"
+    [queryParams]="prevLinkParams"
+  >
+    <app-button
+      [parameters]="{
+        defaultColors: { backgroundColor: '', fontColor: 'red' },
+        hoverColors: { backgroundColor: 'white', fontColor: 'red' }
+      }"
+      appDateColor="{{ item?.publishDate }}"
+      [colorProps]="['backgroundColor', 'borderColor']"
+      [deepColor]="true"
+      ><i class="fa fa-less-than"></i
+    ></app-button>
+  </a>
+  <img
+    src="{{ item?.thumbnail }}"
+    alt="Video thumbnail"
+    class="detailed-video__thumbnail"
+  />
+  <div class="detailed-video__info" appDateColor="{{ item?.publishDate }}">
+    <div class="detailed-video__title-wrapper">
+      <h2 class="detailed-video__title">{{ item?.title }}</h2>
+      <span class="detailed-video__date">{{
+        item?.publishDate | date: 'fullDate'
+      }}</span>
+    </div>
+    <p class="detailed-video__description">{{ item?.description }}</p>
+    <app-video-statistics
+      *ngIf="item?.statistics"
+      [statistics]="item?.statistics"
+      [displayInOneLine]="true"
+    ></app-video-statistics>
+  </div>
+</div>

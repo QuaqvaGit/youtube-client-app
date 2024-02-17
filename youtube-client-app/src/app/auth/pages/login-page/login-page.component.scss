@@ -1,0 +1,19 @@
+@import 'mixins';
+@import 'colors';
+
+.login-page {
+  @include page();
+
+  app-form {
+    display: block;
+    width: max(300px, 25vw);
+    background-color: $primary-light;
+    padding: 20px;
+    border-radius: 40px;
+    @include shadow();
+  }
+
+  app-validated-input {
+    width: 100%;
+  }
+}

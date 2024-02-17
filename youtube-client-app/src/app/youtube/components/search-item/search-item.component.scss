@@ -1,0 +1,93 @@
+@import 'colors';
+@import 'mixins';
+@import 'animations';
+
+.video-item {
+  width: 310px;
+  height: 380px;
+
+  border-radius: 20px;
+  border: 3px solid;
+
+  overflow: hidden;
+
+  position: relative;
+
+  @include shadow();
+  @include flex($justify-content: space-between, $direction: column);
+
+  animation: appear $active-transition;
+
+  &__thumbnail {
+    width: 100%;
+    height: 200px;
+  }
+
+  &__thumbnail-name-wrapper {
+    width: 100%;
+    @include flex($direction: column, $justify-content: flex-start);
+  }
+
+  &__name-wrapper {
+    width: 100%;
+    height: 50px;
+
+    padding: 5px 0;
+
+    @include flex();
+
+    background-color: $primary-light;
+  }
+
+  &__name {
+    @include clamp-lines(2);
+
+    text-align: center;
+    font-weight: bold;
+
+    width: 100%;
+  }
+
+  a {
+    width: 100%;
+  }
+
+  &__more {
+    margin-top: 10px;
+    width: 100%;
+    height: 30px;
+
+    border-radius: 0 0 18px 18px;
+  }
+
+  app-video-statistics {
+    margin: 5px 0;
+  }
+
+  &__delete,
+  &__favorite {
+    cursor: pointer;
+
+    position: absolute;
+    right: 20px;
+    top: 20px;
+
+    background-color: $primary-light;
+    color: $primary-red;
+    border: none;
+
+    padding: 5px;
+    font-size: 1.25em;
+    border-radius: 10px;
+
+    transition: scale $active-transition;
+
+    &:hover {
+      scale: 1.25;
+    }
+
+    &:active {
+      scale: 0.95;
+    }
+  }
+}

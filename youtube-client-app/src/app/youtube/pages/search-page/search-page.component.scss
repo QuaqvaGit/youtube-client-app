@@ -1,0 +1,10 @@
+@import 'mixins';
+
+.search-results {
+  padding: 0 40px;
+
+  @include page();
+
+  @include flex($gap: 40px);
+  flex-wrap: wrap;
+}

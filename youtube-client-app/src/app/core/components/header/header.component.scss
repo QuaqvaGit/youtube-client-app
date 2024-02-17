@@ -1,0 +1,147 @@
+@import 'colors';
+@import 'mixins';
+@import 'variables';
+@import 'animations';
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+
+  width: 100%;
+  height: $header-height;
+
+  background-color: $primary-light;
+  border-bottom: 2px solid $primary-dark;
+
+  @include flex($justify-content: space-between, $align-items: flex-start);
+  padding: 20px 2.5vh;
+
+  font-size: 1.5em;
+
+  @media (max-width: 1280px) {
+    font-size: 1.2em;
+  }
+
+  @media (max-width: 1000px) {
+    &__app-name,
+    &__account-name {
+      display: none;
+    }
+
+    &__account-info i {
+      grid-column: span 2;
+    }
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.8em;
+  }
+
+  &__logo {
+    cursor: pointer;
+    height: 50px;
+    @include flex($gap: 10px);
+    i {
+      color: $primary-red;
+      font-size: 2em;
+    }
+    font-weight: bold;
+    text-align: center;
+  }
+
+  &__search {
+    width: max(50%, 200px);
+    @include flex(
+      $justify-content: center,
+      $align-items: space-evenly,
+      $direction: column
+    );
+  }
+
+  $search-border-radius: 20px;
+  &__searchbar-wrapper {
+    position: relative;
+    height: 50px;
+    flex-grow: 1;
+
+    border-radius: $search-border-radius;
+
+    @include flex();
+
+    &:has(input:focus) {
+      outline: solid;
+      outline-color: $secondary-blue;
+      outline-width: 1.5px;
+      outline-offset: 1px;
+    }
+  }
+
+  app-search-input {
+    width: 95%;
+    height: 100%;
+  }
+
+  &__show-settings {
+    width: calc(max(5%, $search-border-radius) + 10px);
+    height: 100%;
+    background-color: $secondary-light;
+
+    padding-right: 10px;
+
+    border-radius: 0 $search-border-radius $search-border-radius 0;
+    border: 2px solid $primary-grey;
+    border-left: none;
+  }
+
+  &__account-info-placeholder {
+    width: auto;
+    height: 100%;
+
+    &:not(:has(.header__account-info)) {
+      width: min(120px, 15%);
+    }
+
+    @include flex();
+  }
+
+  &__links {
+    margin-right: 10px;
+    @include flex($direction: column, $justify-content: space-between);
+  }
+
+  &__account-info {
+    animation: appear $active-transition;
+
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0 10px;
+
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    i {
+      font-size: 1.5em;
+      color: $primary-red;
+
+      background-color: $secondary-light;
+      padding: 5px;
+
+      border-radius: 5px;
+      border: 2px solid $primary-red;
+    }
+
+    app-button {
+      grid-column: span 2;
+    }
+  }
+
+  &__not-logged-in {
+    display: block;
+    height: 70%;
+    animation: appear $active-transition;
+  }
+}

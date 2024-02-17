@@ -1,0 +1,98 @@
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+<header class="header">
+  <a class="header__logo" (click)="onLogoClick()">
+    <i class="fab fa-youtube"></i>
+    <span class="header__app-name">{{ appTitle }}</span>
+  </a>
+  <form class="header__search" (submit)="onSearch()">
+    <div class="header__searchbar-wrapper">
+      <app-search-input [value]="searchParams.searchValue"></app-search-input>
+      <app-button
+        class="header__show-settings"
+        (click)="onSettingsClick()"
+        [parameters]="{
+          defaultColors: {
+            backgroundColor: 'transparent',
+            fontColor: '#c5c5c5',
+            borderColor: 'transparent'
+          },
+          hoverColors: { backgroundColor: 'transparent', fontColor: '#c5c5c5' }
+        }"
+      >
+        <i class="fa fa-sliders-h"></i>
+      </app-button>
+    </div>
+    <app-sort-criterias
+      [isShown]="criteriasShown"
+      (sortByInput)="onSortParamsChange($event)"
+    ></app-sort-criterias>
+  </form>
+
+  <div class="header__account-info-placeholder">
+    <nav class="header__links">
+      <a [routerLink]="'videos/create'" class="header__link">
+        <app-button
+          [parameters]="{
+            defaultColors: {
+              backgroundColor: 'transparent',
+              fontColor: '#a20000'
+            },
+            hoverColors: {
+              backgroundColor: 'transparent',
+              fontColor: '#a20000'
+            }
+          }"
+        >
+          <i class="fa fa-plus"></i>
+        </app-button>
+      </a>
+
+      <a [routerLink]="'videos/favorite'" class="header__link">
+        <app-button
+          [parameters]="{
+            defaultColors: {
+              backgroundColor: 'transparent',
+              fontColor: '#a20000'
+            },
+            hoverColors: {
+              backgroundColor: 'transparent',
+              fontColor: '#a20000'
+            }
+          }"
+        >
+          <i class="fa fa-heart"></i>
+        </app-button>
+      </a>
+    </nav>
+    <div
+      class="header__account-info"
+      *ngIf="loginService.loggedIn | async; else notLoggedInBlock"
+    >
+      <span class="header__account-name">{{ loginService.userName }}</span>
+      <i class="fa fa-user"></i>
+      <app-button
+        [parameters]="{
+          defaultColors: { backgroundColor: '#a20000', fontColor: 'white' },
+          hoverColors: {}
+        }"
+        (click)="onLogout()"
+      >
+        Logout
+      </app-button>
+    </div>
+    <ng-template #notLoggedInBlock>
+      <a routerLink="login">
+        <app-button
+          class="header__not-logged-in"
+          [parameters]="{
+            defaultColors: { backgroundColor: '#a20000', fontColor: 'white' },
+            hoverColors: {}
+          }"
+        >
+          Login
+        </app-button>
+      </a>
+    </ng-template>
+  </div>
+</header>
