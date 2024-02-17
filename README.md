@@ -1,27 +1,20 @@
-# YoutubeClientApp
+# Youtube client app
+## Описание
+  **Youtube client app** - приложение - клиент ютуба, где можно просматривать доступные на Youtube видео и добавлять свои.
+  Приложение создано в рамках курса **Angular** от [The Rolling Scopes School](rs.school) в ноябре 2023 года.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.8.
+## Функционал
+  - Поиск видео из Youtube с фильтрацией, сортировкой и пагинацией
+  - Возможность добавления видео в избранное
+  - Настроенный routing для нативной навигации по страницам
+  - Авторизация с сохранением данных в ```localStorage```
+  - Адаптивный дизайн
 
-## Development server
+## Стек технологий
+  - Typescript
+  - Angular
+  - SASS (SCSS)
+  - Jest
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Деплой
+https://quaqvagit.github.io/youtube-client-app/
