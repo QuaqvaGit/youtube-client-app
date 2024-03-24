@@ -17,4 +17,4 @@
   - Jest
 
 ## Деплой
-https://quaqvagit.github.io/youtube-client-app/
+https://quaqqva.github.io/youtube-client-app/
